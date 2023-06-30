@@ -1,9 +1,8 @@
-import {useState} from 'react';
+import {useEffect} from 'react';
 export default function ThemeToggle(){
-    
-    function changeTheme(){
-        if(localStorage.getItem('theme') == 'dark'){
-            localStorage.setItem('theme', 'light');
+    useEffect(() => {
+        if(sessionStorage.getItem('theme') == 'dark' || sessionStorage.getItem('theme') == null){
+            sessionStorage.setItem('theme', 'light');
             document.documentElement.style.setProperty('--main-color', 'rgb(255, 255, 255)');
             document.documentElement.style.setProperty('--secondary-color', 'rgb(147, 147, 255)');
             var toggleSwitch = document.getElementById('toggle');
@@ -11,7 +10,26 @@ export default function ThemeToggle(){
                 toggleSwitch.style.marginLeft = '30px';
             }
         }else{
-            localStorage.setItem('theme', 'dark');
+            sessionStorage.setItem('theme', 'dark');
+            document.documentElement.style.setProperty('--main-color', 'rgba(0, 0, 0, 1)');
+            document.documentElement.style.setProperty('--secondary-color', 'rgb(0, 0, 71)');
+            var toggleSwitch = document.getElementById('toggle');
+            if(toggleSwitch != null){
+                toggleSwitch.style.marginLeft = '0px';
+            }
+        }
+    },[]);
+    function changeTheme(){
+        if(sessionStorage.getItem('theme') == 'dark' || sessionStorage.getItem('theme') == null){
+            sessionStorage.setItem('theme', 'light');
+            document.documentElement.style.setProperty('--main-color', 'rgb(255, 255, 255)');
+            document.documentElement.style.setProperty('--secondary-color', 'rgb(147, 147, 255)');
+            var toggleSwitch = document.getElementById('toggle');
+            if(toggleSwitch != null){
+                toggleSwitch.style.marginLeft = '30px';
+            }
+        }else{
+            sessionStorage.setItem('theme', 'dark');
             document.documentElement.style.setProperty('--main-color', 'rgba(0, 0, 0, 1)');
             document.documentElement.style.setProperty('--secondary-color', 'rgb(0, 0, 71)');
             var toggleSwitch = document.getElementById('toggle');
