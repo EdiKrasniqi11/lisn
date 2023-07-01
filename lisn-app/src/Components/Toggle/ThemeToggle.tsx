@@ -5,6 +5,8 @@ export default function ThemeToggle(){
             sessionStorage.setItem('theme', 'light');
             document.documentElement.style.setProperty('--main-color', 'rgb(255, 255, 255)');
             document.documentElement.style.setProperty('--secondary-color', 'rgb(147, 147, 255)');
+            document.documentElement.style.setProperty('--third-color', 'rgba(0, 165, 55, 0.675)');
+            document.documentElement.style.setProperty('--link-color', 'rgb(0, 0, 0)');
             var toggleSwitch = document.getElementById('toggle');
             if(toggleSwitch != null){
                 toggleSwitch.style.marginLeft = '30px';
@@ -13,6 +15,8 @@ export default function ThemeToggle(){
             sessionStorage.setItem('theme', 'dark');
             document.documentElement.style.setProperty('--main-color', 'rgba(0, 0, 0, 1)');
             document.documentElement.style.setProperty('--secondary-color', 'rgb(0, 0, 71)');
+            document.documentElement.style.setProperty('--third-color', 'rgb(0, 66, 22)');
+            document.documentElement.style.setProperty('--link-color', 'rgb(0, 177, 62)');
             var toggleSwitch = document.getElementById('toggle');
             if(toggleSwitch != null){
                 toggleSwitch.style.marginLeft = '0px';
@@ -24,6 +28,8 @@ export default function ThemeToggle(){
             sessionStorage.setItem('theme', 'light');
             document.documentElement.style.setProperty('--main-color', 'rgb(255, 255, 255)');
             document.documentElement.style.setProperty('--secondary-color', 'rgb(147, 147, 255)');
+            document.documentElement.style.setProperty('--third-color', 'rgba(0, 165, 55, 0.675)');
+            document.documentElement.style.setProperty('--link-color', 'rgb(0, 0, 0)');
             var toggleSwitch = document.getElementById('toggle');
             if(toggleSwitch != null){
                 toggleSwitch.style.marginLeft = '30px';
@@ -32,6 +38,8 @@ export default function ThemeToggle(){
             sessionStorage.setItem('theme', 'dark');
             document.documentElement.style.setProperty('--main-color', 'rgba(0, 0, 0, 1)');
             document.documentElement.style.setProperty('--secondary-color', 'rgb(0, 0, 71)');
+            document.documentElement.style.setProperty('--third-color', 'rgb(0, 66, 22)');
+            document.documentElement.style.setProperty('--link-color', 'rgb(0, 177, 62)');
             var toggleSwitch = document.getElementById('toggle');
             if(toggleSwitch != null){
                 toggleSwitch.style.marginLeft = '0px';

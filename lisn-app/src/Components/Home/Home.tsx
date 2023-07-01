@@ -18,6 +18,14 @@ export default function Home(){
                         <img src={Views} className={style.playlistImage}/>
                         <h3>To Pimp a Butterfly</h3>
                     </div>
+                    <div className={style.playlist}>
+                        <img src={Views} className={style.playlistImage}/>
+                        <h3>DAMN</h3>
+                    </div>
+                    <div className={style.playlist}>
+                        <img src={Views} className={style.playlistImage}/>
+                        <h3>Vince Staples</h3>
+                    </div>
                 </div>
             </div>
             

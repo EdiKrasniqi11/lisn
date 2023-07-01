@@ -48,10 +48,12 @@
 .playlists{
     display:flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .playlist{
     position:relative;
     height: 100px;
+    margin-bottom:20px;
     width:49%;
     border-radius:5px;
     background-color: rgb(60, 60, 60);
@@ -69,7 +71,7 @@
     cursor:pointer;
 }
 .playlistImage{
-    height:100px;
+    height:100%;
     aspect-ratio:1;
     border-radius:5px 0px 0px 5px;
     margin-right:10px;

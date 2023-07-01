@@ -1,0 +1,86 @@
+.login{
+    height:100vh;
+    width:100vw;
+    background: var(--third-color);
+    background: radial-gradient(circle at 90% 190%, var(--main-color) 0%, var(--third-color) 49%, var(--main-color) 70%);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.loginForm{
+    width:44%;
+    color:rgb(212, 212, 212);
+    font-family: 'Josefin Sans', sans-serif;
+    background-color:rgba(34, 34, 34, 0.636);
+    box-shadow: 0px 0px 30px 5px rgba(0, 71, 35, 0.559);
+    margin-top:2%;
+    border-radius:5px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-inline: 3%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loginForm input{
+    border:1px solid rgba(255, 255, 255, 0.581);
+    height:3em;
+    width:50%;
+    margin-bottom:2%;
+    padding-left:2%;
+    border-radius:5px;
+    background-color: transparent;
+    font-family: 'Josefin Sans', sans-serif;
+    color: rgb(212, 212, 212);
+    caret-color: rgb(212, 212, 212);
+    transition:border 0.2s ease-in-out;
+}
+.inputLabel{
+    width:53%;
+}
+.loginForm input::placeholder{
+    color: rgb(212, 212, 212);
+}
+.loginForm input:hover, .loginForm input:focus{
+    border:1px solid white;
+}
+.submitButton{
+    border: none;
+    height:3em;
+    width:53%;
+    border-radius:5px;
+    background-color: rgb(0, 177, 62);
+    cursor:pointer;
+    font-family: 'Josefin Sans', sans-serif;
+    color:rgb(212, 212, 212);
+    transition:border 0.2s ease-in-out;
+}
+.submitButton:hover, .submitButton:focus{
+    box-shadow: inset 0px 0px 2px 2px rgba(0, 124, 54, 0.444);
+    color:rgb(229, 229, 229);
+}
+.registerContainer{
+    display:flex;
+    align-items:baseline;
+}
+.registerDirectory{
+    color:rgb(236, 236, 236);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.registerLink{
+    margin-left:5px;
+    color: var(--link-color);
+    text-decoration: none;
+}
+.registerLink:hover, .registerLink:focus{
+    text-decoration: underline;
+}
