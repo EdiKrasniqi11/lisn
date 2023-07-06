@@ -1,8 +1,19 @@
+import { useEffect, useState } from 'react'
 import style from './Register.module.css';
 import googleLogo from '../../Assets/Images/google-logo.png';
 import {LoginSocialGoogle} from 'reactjs-social-login';
 
 export default function Register(){
+    const [months, setMonths] = useState<number[]>([]);
+    const [days, setDays] = useState<number[]>([]);
+    const [years, setYears] = useState<number[]>([]);
+
+    useEffect(() => {
+        setMonths(Array.from({ length: 12 }, (_, index) => index + 1));
+        setDays(Array.from({ length: 31 }, (_, index) => index + 1));
+        setYears(Array.from({ length: 2023 - 1900 + 1 }, (_, index) => 2023 - index));
+    },[]);
+
     return(
         <div className={style.register}>
             <form className={style.registerForm}>
@@ -13,11 +24,46 @@ export default function Register(){
                 </div>
                 <h1>Register</h1>
                 <label className={style.inputLabel}>email</label>
-                <input type="text" placeholder="email"/>
+                <input type="email" placeholder="email"/>
                 <label className={style.inputLabel}>username</label>
                 <input type="text" placeholder="username"/>
                 <label className={style.inputLabel}>password</label>
                 <input type="password" placeholder="password"/>
+                <label className={style.inputLabel}>date of birth</label>
+                <div className={style.ageDiv}>
+                    <select className={style.dateSelect}>
+                        <option selected disabled>month</option>
+                        {months.map(month => (
+                            <option value={month} className={style.dateOption}>
+                                {month}
+                            </option>
+                        ))}
+                    </select>
+                    <select className={style.dateSelect}>
+                        <option selected disabled>day</option>
+                        {days.map(day => (
+                            <option value={day} className={style.dateOption}>
+                                {day}
+                            </option>
+                        ))}
+                    </select>
+                    <select className={style.dateSelect}>
+                        <option selected disabled>year</option>
+                        {years.map(year => (
+                            <option value={year} className={style.dateOption}>
+                                {year}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <label className={style.inputLabel}>gender</label>
+                <select className={style.genderSelect}>
+                    <option selected disabled>gender</option>
+                    <option>male</option>
+                    <option>female</option>
+                    <option>other</option>
+                    <option>prefer not to say</option>
+                </select>
                 <button type="submit" className={style.submitButton}>Register</button>
                 <LoginSocialGoogle
                     client_id={
@@ -35,7 +81,7 @@ export default function Register(){
                      }}
                      className={style.googleContainer}
                     >
-                    <button className={style.googleRegister}><img src={googleLogo}/>Login with Google</button>
+                    <button className={style.googleRegister}><img src={googleLogo}/>Register with Google</button>
                 </LoginSocialGoogle>
             </form>
         </div>

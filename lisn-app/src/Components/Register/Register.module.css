@@ -108,3 +108,35 @@
 #goBack:hover{
     fill: rgb(223, 223, 223);
 }
+.ageDiv{
+    width:53%;
+    display:flex;
+    justify-content: space-between;
+    margin-bottom:2%;
+}
+.dateSelect:hover, .dateSelect:focus{
+    border:1px solid white;
+}
+.dateSelect{
+    border:1px solid rgba(255, 255, 255, 0.581);
+    height:3em;
+    width:30%;
+    border-radius:5px;
+    background-color: transparent;
+    font-family: 'Josefin Sans', sans-serif;
+    color: rgb(212, 212, 212);
+    caret-color: rgb(212, 212, 212);
+    transition:border 0.2s ease-in-out;   
+}
+.genderSelect{
+    border:1px solid rgba(255, 255, 255, 0.581);
+    height:3em;
+    width:53%;
+    margin-bottom:2%;
+    border-radius:5px;
+    background-color: transparent;
+    font-family: 'Josefin Sans', sans-serif;
+    color: rgb(212, 212, 212);
+    caret-color: rgb(212, 212, 212);
+    transition:border 0.2s ease-in-out;   
+}

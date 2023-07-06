@@ -4,6 +4,7 @@ import Login from './Components/Login/Login'
 import Register from './Components/Register/Register';
 import Sidebar from './Components/Sidebar/Sidebar';
 import ThemeToggle from './Components/Toggle/ThemeToggle';
+import Messages from './Components/Messages/Messages';
 
 
 import {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
+          <Route path="/messages/*" element={<Messages/>}/>
         </Routes>
         <ThemeToggle/>
       </Router>

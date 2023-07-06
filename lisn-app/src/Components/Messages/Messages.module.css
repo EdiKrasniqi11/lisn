@@ -1,0 +1,171 @@
+.messages{
+    padding-left: 5%;
+    height:100vh;
+    width:95%;
+    background: var(--secondary-color);
+    background: radial-gradient(circle at 90% 190%, var(--main-color) 0%, var(--secondary-color) 49%, var(--main-color) 70%);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.messageContainer{
+    width:90%;
+    height:100%;
+    color:rgb(212, 212, 212);
+    font-family: 'Josefin Sans', sans-serif;
+    background-color:rgba(34, 34, 34, 0.636);
+    box-shadow: 0px 0px 30px 10px rgba(1, 19, 77, 0.662);
+    margin-top:2%;
+    margin-bottom:2%;
+    border-radius:5px;
+    padding-block: 20px;
+    padding-inline: 3%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.friendsList{
+    width: 100%;
+}
+.friendsList{
+    display:flex;
+    margin-bottom:1%;
+    padding-bottom:1%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.445);
+}
+.friendBox{
+    display: flex;
+    padding:0.5%;
+    align-items:center;
+    cursor: pointer;
+    padding-inline: 1%;
+    border-right: 1px solid rgba(255, 255, 255, 0.445);
+}
+.navLink{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    color:inherit;
+}
+.friendBox h4{
+    margin:0;
+}
+.friendBox:hover h4{
+    opacity: 0.7;
+}
+.friendBox img{
+    border-radius:50px;
+    height:35px;
+    aspect-ratio:1;
+    margin-right:5px;
+}
+.messageDisplay{
+    padding-block: 1%;
+    width:100%;
+    border: 1px solid rgba(255,255,255,0.445);
+    border-radius: 5px; 
+}
+.chatDisplay{
+    position: relative;
+    height: 20rem;
+    width:100%;
+    overflow-y: scroll;
+    margin-left: 0.5%;
+}
+.chatDisplay img{
+    display: flex;
+    flex-direction: column;
+    border-radius:50px;
+    height:35px;
+    aspect-ratio:1;
+    margin-right:5px;
+}
+.recievedMessage{
+    width:100%;
+    display:flex;
+    align-items: center;
+}
+.recievedMessageText{
+    background-color: grey;
+    padding: 0.5%;
+    border-radius: 25px 25px 25px 0px;
+    box-shadow: 0px 0px 4px 0.2px rgba(84, 84, 84, 0.662);
+}
+.recievedMessageText p{
+    margin:0;
+}
+.sentMessage{
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: right;
+}
+.sentMessageText{
+    background-color: rgb(76, 113, 134);
+    padding: 0.5%;
+    border-radius: 25px 25px 0px 25px;
+    box-shadow: 0px 0px 4px 0.2px rgba(84, 84, 84, 0.662);
+}
+.sentMessageText p{
+    margin:0;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(54, 131, 255, 0.136);
+    border-radius: 50px; 
+}
+.chatBox{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.chatInput{
+    border:1px solid rgba(255, 255, 255, 0.581);
+    height:3em;
+    width:90%;
+    padding-left:1%;
+    border-radius: 50px;
+    background-color: transparent;
+    font-family: 'Josefin Sans', sans-serif;
+    color: rgb(212, 212, 212);
+    caret-color: rgb(212, 212, 212);
+    transition:border 0.2s ease-in-out;
+}
+.chatInput::placeholder{
+    color: rgb(212, 212, 212);
+}
+.chatInput:focus{
+    border: 1px solid rgba(67, 139, 255, 0.581);
+    box-shadow: 0px 0px 10px 1px rgba(67, 139, 255, 0.581);
+}
+.sendButton{
+    border:1px solid rgba(255, 255, 255, 0.581);
+    font-family: 'Josefin Sans', sans-serif;
+    color: inherit;
+    background-color:transparent;
+    height: 3em;
+    aspect-ratio:2;
+    border-radius: 50px;
+    cursor:pointer;
+    transition: border, box-shadow 0.4s ease-in-out;
+}
+.sendButton:hover, .sendButton:focus{
+    border: 1px solid rgba(67, 139, 255, 0.581);
+    box-shadow: 0px 0px 10px 1px rgba(67, 139, 255, 0.581);
+    animation: colorSwitch 0.6s forwards;
+}
+@keyframes colorSwitch{
+    0%{
+        color: inherit;
+    }
+    50%{
+        color: rgb(147, 188, 255);
+    }
+    100%{
+        color: rgb(67, 139, 255);
+    }
+}

@@ -54,6 +54,7 @@
     border: none;
     height:3em;
     width:53%;
+    margin-bottom:2%;
     border-radius:5px;
     background-color: rgb(0, 177, 62);
     cursor:pointer;
@@ -83,4 +84,32 @@
 }
 .registerLink:hover, .registerLink:focus{
     text-decoration: underline;
+}
+.googleContainer{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.googleRegister{
+    background-color: transparent;
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 25px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+    height: 3em;
+    width: 53%;
+    color: white;
+    border:1px solid rgba(255, 255, 255, 0.581);
+    transition: font-size 0.3s ease-in-out;
+}
+.googleRegister:hover{
+    border: 1px solid rgb(223, 223, 223);
+    font-size:85%;
+}
+.googleRegister img{
+    height:25px;
+    aspect-ratio: 1;
 }
