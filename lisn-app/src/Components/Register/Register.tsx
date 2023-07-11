@@ -64,6 +64,21 @@ export default function Register(){
                     <option>other</option>
                     <option>prefer not to say</option>
                 </select>
+                <label className={style.inputLabel}>location</label>
+                <div className={style.locationSelect}>
+                    <select className={style.countrySelect}>
+                        <option selected disabled>country</option>
+                        <option>Kosovo</option>
+                        <option>Albania</option>
+                        <option>United States</option>
+                    </select>
+                    <select className={style.citySelect}>
+                        <option selected disabled>city</option>
+                        <option>Prishtina</option>
+                        <option>Tirana</option>
+                        <option>San Diego, California</option>
+                    </select>
+                </div>
                 <button type="submit" className={style.submitButton}>Register</button>
                 <LoginSocialGoogle
                     client_id={
