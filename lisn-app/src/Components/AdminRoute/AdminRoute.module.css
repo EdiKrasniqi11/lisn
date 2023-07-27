@@ -1,0 +1,19 @@
+.wrenchDiv {
+  position: fixed;
+  top: 5%;
+  left: 95%;
+  color: white;
+  background-color: rgba(34, 34, 34, 0.482);
+  padding: 0.5%;
+  border-radius: 25px;
+}
+.wrenchDiv svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrenchDiv svg:hover,
+.wrenchDiv:focus {
+  fill: rgba(255, 255, 255, 0.692);
+  transition: fill 0.3s ease-in-out;
+}

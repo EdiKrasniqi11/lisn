@@ -1,46 +1,46 @@
-.sidebar{
-    position:fixed;
-    left:0;
-    width:5%;
-    height: 100%;
-    padding-block:2.5%;
-    background-color:rgba(34, 34, 34, 0.636);    
+.sidebar {
+  position: fixed;
+  left: 0;
+  width: 5%;
+  height: 100%;
+  padding-block: 2.5%;
+  background-color: rgba(34, 34, 34, 0.636);
 }
-.staticNav{
-    height:30%;
-    width:100%;
-    text-align: center;
+.staticNav {
+  height: 30%;
+  width: 100%;
+  text-align: center;
 }
-.navIcons{
-    margin-bottom: 75%;
+.navIcons {
+  margin-bottom: 75%;
 }
-#sidebarButton{
-    width:40%;
-    aspect-ratio:1;
-    transition: fill 0.3s ease-in-out;
-}    
-#playlistButton{
-    transition: box-shadow 0.3s ease-in-out;
+#sidebarButton {
+  width: 40%;
+  aspect-ratio: 1;
+  transition: fill 0.3s ease-in-out;
 }
-#sidebarButton:hover{
-    cursor:pointer;
-    fill:rgb(180, 180, 180);
+#playlistButton {
+  transition: box-shadow 0.3s ease-in-out;
 }
-#playlistButton:hover{
-    cursor:pointer;
-    box-shadow: 0px 0px 0px 6px rgba(65, 65, 65, 0.264);
+#sidebarButton:hover {
+  cursor: pointer;
+  fill: rgb(180, 180, 180);
 }
-.staticNav img{
-    width:70%;
-    border-radius: 5px;
-    aspect-ratio: 1;
+#playlistButton:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 6px rgba(65, 65, 65, 0.264);
 }
-.breakLine{
-    background-color: white;
-    height:1px;
-    width:70%;
+.staticNav img {
+  width: 70%;
+  border-radius: 5px;
+  aspect-ratio: 1;
 }
-.blobContainer{
-    position:fixed;
-    right: 1%;
+.breakLine {
+  background-color: white;
+  height: 1px;
+  width: 70%;
+}
+.blobContainer {
+  position: fixed;
+  right: 1%;
 }

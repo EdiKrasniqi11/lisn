@@ -1,0 +1,31 @@
+.dataTable {
+  width: 100%;
+}
+.dataTable td,
+.dataTable th {
+  width: 25%;
+  height: 5vh;
+  text-align: center;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+}
+.dataTable td:nth-child(4n),
+.dataTable th:nth-child(4) {
+  border-right: none;
+}
+.dataTable tr:last-child td {
+  border-bottom: none;
+}
+.optionsDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.optionsDiv svg {
+  cursor: pointer;
+  margin-left: 5%;
+}
+.optionsDiv svg:hover, .optionsDiv svg:focus{
+  fill: rgba(255, 255, 255, 0.548);
+}

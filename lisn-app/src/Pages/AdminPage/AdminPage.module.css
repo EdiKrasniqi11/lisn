@@ -1,0 +1,60 @@
+.adminDiv {
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--secondary-color);
+  background: radial-gradient(
+    circle at 90% 190%,
+    var(--main-color) 0%,
+    var(--secondary-color) 49%,
+    var(--main-color) 70%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Josefin Sans", sans-serif;
+}
+.contentDiv {
+  width: 64%;
+  height: 87vh;
+  color: rgb(212, 212, 212);
+  font-family: "Josefin Sans", sans-serif;
+  background-color: rgba(34, 34, 34, 0.636);
+  box-shadow: 0px 0px 30px 10px rgba(1, 19, 77, 0.662);
+  margin-top: 2%;
+  border-radius: 5px;
+  padding-block: 20px;
+  padding-inline: 3%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.navigation {
+  width: 100%;
+  height: 3vh;
+  display: flex;
+}
+.navigationDiv:nth-child(1) {
+  padding-left: 0;
+}
+.navigationDiv {
+  border-right: 1px solid white;
+  display: flex;
+  align-items: center;
+  padding-inline: 1%;
+  cursor: pointer;
+}
+.navigationDiv:hover {
+  color: rgb(175, 175, 175);
+}
+.contentDiv a {
+  text-decoration: none;
+  color: inherit;
+}
+.dataShowcaseDiv {
+  border: 1px solid rgba(255, 255, 255, 0.793);
+  border-radius: 10px;
+  height: 75%;
+  margin-top: 2%;
+  padding: 2%;
+}
