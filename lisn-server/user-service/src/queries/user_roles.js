@@ -1,12 +1,12 @@
-export async function getUserRoles(sql, config) {
-  const pool = await sql.connect(config);
+import sql from "mssql";
+
+export async function getUserRoles(pool) {
   const result = await pool.request().query("SELECT * FROM USER_ROLES");
   const dataset = result.recordset;
   return dataset;
 }
 
-export async function getUserRoleById(sql, config, id) {
-  const pool = await sql.connect(config);
+export async function getUserRoleById(pool, id) {
   const result = await pool
     .request()
     .input("role_id", sql.Int, id)
@@ -15,8 +15,7 @@ export async function getUserRoleById(sql, config, id) {
   return dataset;
 }
 
-export async function createUserRole(sql, config, role_name) {
-  const pool = await sql.connect(config);
+export async function createUserRole(pool, role_name) {
   const result = await pool
     .request()
     .input("role_name", sql.VarChar, role_name)
@@ -27,8 +26,7 @@ export async function createUserRole(sql, config, role_name) {
   return object;
 }
 
-export async function updateUserRole(sql, config, role_id, role_name) {
-  const pool = await sql.connect(config);
+export async function updateUserRole(pool, role_id, role_name) {
   const result = await pool
     .request()
     .input("role_id", sql.Int, role_id)
@@ -40,8 +38,7 @@ export async function updateUserRole(sql, config, role_id, role_name) {
   return object;
 }
 
-export async function deleteUserRole(sql, config, role_id) {
-  const pool = await sql.connect(config);
+export async function deleteUserRole(pool, role_id) {
   const result = await pool
     .request()
     .input("role_id", sql.Int, role_id)

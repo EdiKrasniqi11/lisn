@@ -21,10 +21,13 @@ const config = {
 };
 
 const router = express.Router();
+const pool = new sql.ConnectionPool(config);
+const poolConnect = pool.connect();
 
 router.get("/", async (req, res, next) => {
   try {
-    const cities = await getCities(sql, config);
+    await poolConnect;
+    const cities = await getCities(pool);
     res.send(200, cities);
   } catch (error) {
     res.send(error);
@@ -36,7 +39,8 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const city = await getCityById(sql, config, req.params.id);
+    await poolConnect;
+    const city = await getCityById(pool, req.params.id);
     if (city === null || city === {}) {
       res.send(404, "City with id " + req.params.id + " does not exist.");
     } else {
@@ -52,9 +56,9 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
+    await poolConnect;
     const result = await createCity(
-      sql,
-      config,
+      pool,
       req.body.CITY_NAME,
       req.body.COUNTRY_ID
     );
@@ -69,9 +73,9 @@ router.post("/", async (req, res, next) => {
 
 router.put("/", async (req, res, next) => {
   try {
+    await poolConnect;
     const result = await updateCity(
-      sql,
-      config,
+      pool,
       req.body.CITY_ID,
       req.body.CITY_NAME,
       req.body.COUNTRY_ID
@@ -86,7 +90,8 @@ router.put("/", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
-    const result = await deleteCity(sql, config, req.params.id);
+    await poolConnect;
+    const result = await deleteCity(pool, req.params.id);
     if (result === null || result === {}) {
       res.send(404, "City with id:" + req.params.id + " DOES NOT EXIST.");
     }

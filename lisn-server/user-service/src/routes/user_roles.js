@@ -21,10 +21,13 @@ const config = {
 };
 
 const router = express.Router();
+const pool = new sql.ConnectionPool(config);
+const poolConnect = pool.connect();
 
 router.get("/", async (req, res, next) => {
   try {
-    const userRoles = await getUserRoles(sql, config);
+    await poolConnect;
+    const userRoles = await getUserRoles(pool);
     res.send(200, userRoles);
   } catch (error) {
     res.send(error);
@@ -36,7 +39,8 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const userRole = await getUserRoleById(sql, config, req.params.id);
+    await poolConnect;
+    const userRole = await getUserRoleById(pool, req.params.id);
     if (userRole === null || userRole === {}) {
       res.send(404, "User role with id " + req.params.id + " does not exist.");
     } else {
@@ -52,7 +56,8 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const result = await createUserRole(sql, config, req.body.ROLE_NAME);
+    await poolConnect;
+    const result = await createUserRole(pool, req.body.ROLE_NAME);
     res.send(200, result);
   } catch (error) {
     res.send(400, error);
@@ -64,9 +69,9 @@ router.post("/", async (req, res, next) => {
 
 router.put("/", async (req, res, next) => {
   try {
+    await poolConnect;
     const result = await updateUserRole(
-      sql,
-      config,
+      pool,
       req.body.ROLE_ID,
       req.body.ROLE_NAME
     );
@@ -80,7 +85,8 @@ router.put("/", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
-    const result = await deleteUserRole(sql, config, req.params.id);
+    await poolConnect;
+    const result = await deleteUserRole(pool, req.params.id);
     if (result === null || result === {}) {
       res.send(404, "ROLE with id:" + req.params.id + " DOES NOT EXIST.");
     }
@@ -92,4 +98,11 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+process.on("beforeExit", async () => {
+  try {
+    await pool.close();
+  } catch (err) {
+    console.error("Error closing the SQL pool:", err);
+  }
+});
 export default router;

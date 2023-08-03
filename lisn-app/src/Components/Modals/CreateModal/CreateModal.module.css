@@ -24,6 +24,18 @@
   width: 100%;
 }
 .createForm input {
+  width: 90%;
+  font-family: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 25px;
+  padding: 3%;
+  text-align: left;
+  margin-bottom: 5%;
+}
+.createForm select {
+  width: 96%;
   font-family: inherit;
   color: inherit;
   background-color: transparent;

@@ -1,12 +1,12 @@
-export async function getCountries(sql, config) {
-  const pool = await sql.connect(config);
+import sql from "mssql";
+
+export async function getCountries(pool) {
   const result = await pool.request().query("SELECT * FROM COUNTRIES");
   const dataset = result.recordset;
   return dataset;
 }
 
-export async function getCountryById(sql, config, id) {
-  const pool = await sql.connect(config);
+export async function getCountryById(pool, id) {
   const result = await pool
     .request()
     .input("country_id", sql.Int, id)
@@ -15,8 +15,7 @@ export async function getCountryById(sql, config, id) {
   return dataset;
 }
 
-export async function createCountry(sql, config, country_name, country_icon) {
-  const pool = await sql.connect(config);
+export async function createCountry(pool, country_name, country_icon) {
   const result = await pool
     .request()
     .input("country_name", sql.VarChar, country_name)
@@ -29,13 +28,11 @@ export async function createCountry(sql, config, country_name, country_icon) {
 }
 
 export async function updateCountry(
-  sql,
-  config,
+  pool,
   country_id,
   country_name,
   country_icon
 ) {
-  const pool = await sql.connect(config);
   const result = await pool
     .request()
     .input("country_id", sql.Int, country_id)
@@ -48,8 +45,7 @@ export async function updateCountry(
   return object;
 }
 
-export async function deleteCountry(sql, config, country_id) {
-  const pool = await sql.connect(config);
+export async function deleteCountry(pool, country_id) {
   const result = await pool
     .request()
     .input("country_id", sql.Int, country_id)

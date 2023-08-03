@@ -21,69 +21,74 @@ const config = {
 };
 
 const router = express.Router();
+const pool = new sql.ConnectionPool(config);
+const poolConnect = pool.connect();
 
 router.get("/", async (req, res, next) => {
   try {
-    const userStates = await getUserStates(sql, config);
+    await poolConnect;
+    const userStates = await getUserStates(pool);
     res.send(200, userStates);
   } catch (error) {
     res.send(error);
     next(error);
-  } finally {
-    sql.close();
   }
 });
 
 router.get("/:id", async (req, res, next) => {
   try {
+    await poolConnect;
     const id = req.params.id;
-    const userState = await getUserStateById(sql, config, id);
+    const userState = await getUserStateById(pool, id);
     res.send(200, userState);
   } catch (error) {
     res.send(error);
     next(error);
-  } finally {
-    sql.close();
   }
 });
 
 router.post("/", async (req, res, next) => {
   try {
+    await poolConnect;
     const state_name = req.body.STATE_NAME;
-    const result = await createUserState(sql, config, state_name);
+    const result = await createUserState(pool, state_name);
     res.send(200, result);
   } catch (error) {
     res.send(error);
     next(error);
-  } finally {
-    sql.close();
   }
 });
 
 router.put("/", async (req, res, next) => {
   try {
+    await poolConnect;
     const state_id = req.body.STATE_ID;
     const state_name = req.body.STATE_NAME;
-    const result = await updateUserState(sql, config, state_id, state_name);
+    const result = await updateUserState(pool, state_id, state_name);
     res.send(200, result);
   } catch (error) {
     res.send(error);
     next(error);
-  } finally {
-    sql.close();
   }
 });
 
 router.delete("/:id", async (req, res, next) => {
   try {
+    await poolConnect;
     const state_id = req.params.id;
-    const result = await deleteUserState(sql, config, state_id);
+    const result = await deleteUserState(pool, state_id);
     res.send(200, result);
   } catch (error) {
     res.send(error);
     next(error);
-  } finally {
-    sql.close();
+  }
+});
+
+process.on("beforeExit", async () => {
+  try {
+    await pool.close();
+  } catch (err) {
+    console.error("Error closing the SQL pool:", err);
   }
 });
 

@@ -3,7 +3,7 @@
 }
 .dataTable td,
 .dataTable th {
-  width: 25%;
+  width: 20%;
   height: 5vh;
   text-align: center;
   border-right: 1px solid white;

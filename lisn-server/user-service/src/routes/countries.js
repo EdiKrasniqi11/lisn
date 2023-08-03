@@ -21,10 +21,13 @@ const config = {
 };
 
 const router = express.Router();
+const pool = new sql.ConnectionPool(config);
+const poolConnect = pool.connect();
 
 router.get("/", async (req, res, next) => {
   try {
-    const countries = await getCountries(sql, config);
+    await poolConnect;
+    const countries = await getCountries(pool);
     res.send(200, countries);
   } catch (error) {
     res.send(error);
@@ -36,7 +39,8 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const country = await getCountryById(sql, config, req.params.id);
+    await poolConnect;
+    const country = await getCountryById(pool, req.params.id);
     if (country === null || country === {}) {
       res.send(404, "Country with id " + req.params.id + " does not exist.");
     } else {
@@ -52,9 +56,9 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
+    await poolConnect;
     const result = await createCountry(
-      sql,
-      config,
+      pool,
       req.body.COUNTRY_NAME,
       req.body.COUNTRY_ICON
     );
@@ -69,9 +73,9 @@ router.post("/", async (req, res, next) => {
 
 router.put("/", async (req, res, next) => {
   try {
+    await poolConnect;
     const result = await updateCountry(
-      sql,
-      config,
+      pool,
       req.body.COUNTRY_ID,
       req.body.COUNTRY_NAME,
       req.body.COUNTRY_ICON
@@ -86,7 +90,8 @@ router.put("/", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
-    const result = await deleteCountry(sql, config, req.params.id);
+    await poolConnect;
+    const result = await deleteCountry(pool, req.params.id);
     if (result === null || result === {}) {
       res.send(404, "Country with id:" + req.params.id + " DOES NOT EXIST.");
     }
@@ -98,4 +103,11 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+process.on("beforeExit", async () => {
+  try {
+    await pool.close();
+  } catch (err) {
+    console.error("Error closing the SQL pool:", err);
+  }
+});
 export default router;

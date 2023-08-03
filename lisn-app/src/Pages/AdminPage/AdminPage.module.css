@@ -58,6 +58,6 @@
   height: 75%;
   margin-top: 2%;
   padding: 2%;
-  overflow: hidden;
+  overflow-y: hidden;
   overflow-y: auto;
 }

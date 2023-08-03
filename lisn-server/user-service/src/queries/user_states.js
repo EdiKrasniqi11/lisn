@@ -1,12 +1,12 @@
-export async function getUserStates(sql, config) {
-  const pool = await sql.connect(config);
+import sql from "mssql";
+
+export async function getUserStates(pool) {
   const result = await pool.request().query("SELECT * FROM USER_STATES");
   const dataset = result.recordset;
   return dataset;
 }
 
-export async function getUserStateById(sql, config, id) {
-  const pool = await sql.connect(config);
+export async function getUserStateById(pool, id) {
   const result = await pool
     .request()
     .input("id", sql.Int, id)
@@ -15,8 +15,7 @@ export async function getUserStateById(sql, config, id) {
   return dataset;
 }
 
-export async function createUserState(sql, config, state_name) {
-  const pool = await sql.connect(config);
+export async function createUserState(pool, state_name) {
   const result = await pool
     .request()
     .input("state_name", sql.VarChar, state_name)
@@ -27,8 +26,7 @@ export async function createUserState(sql, config, state_name) {
   return dataset;
 }
 
-export async function updateUserState(sql, config, state_id, state_name) {
-  const pool = await sql.connect(config);
+export async function updateUserState(pool, state_id, state_name) {
   const result = await pool
     .request()
     .input("state_id", sql.Int, state_id)
@@ -40,8 +38,7 @@ export async function updateUserState(sql, config, state_id, state_name) {
   return dataset;
 }
 
-export async function deleteUserState(sql, config, state_id) {
-  const pool = await sql.connect(config);
+export async function deleteUserState(pool, state_id) {
   const result = await pool
     .request()
     .input("state_id", sql.Int, state_id)

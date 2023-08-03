@@ -20,19 +20,12 @@ export default function Cities() {
   const [editableCity, setEditableCity] = useState<CITY>();
   const [cityName, setCityName] = useState<string>("");
   const [countryId, setCountryId] = useState<number>(0);
+  const [countryOptions, setCountryOptions] =
+    useState<DataInputConfig["options"]>();
   const objectName = "City";
-  const stateInputConfig: DataInputConfig[] = [
-    {
-      name: "CITY_NAME",
-      type: "text",
-      placeholder: "City name",
-    },
-    {
-      name: "COUNTRY_ID",
-      type: "number",
-      placeholder: "Country id",
-    },
-  ];
+  const [stateInputConfig, setStateInputConfig] = useState<DataInputConfig[]>(
+    []
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,6 +52,21 @@ export default function Cities() {
       }
     }
   }, [params]);
+  useEffect(() => {
+    setCountriesAsOptions();
+    setStateInputConfig([
+      {
+        name: "CITY_NAME",
+        type: "text",
+        placeholder: "City name",
+      },
+      {
+        name: "COUNTRY_ID",
+        type: "select",
+        options: countryOptions,
+      },
+    ]);
+  }, [countries]);
 
   const changeCityName = (e: ChangeEvent<HTMLInputElement>) => {
     setCityName(e.target.value);
@@ -70,7 +78,7 @@ export default function Cities() {
       setEditableCity(newEditableCity);
     }
   };
-  const changeCountryId = (e: ChangeEvent<HTMLInputElement>) => {
+  const changeCountryId = (e: ChangeEvent<HTMLSelectElement>) => {
     setCountryId(parseInt(e.target.value));
     if (editableCity !== undefined) {
       const newEditableCity = {
@@ -85,6 +93,13 @@ export default function Cities() {
       (country) => country.COUNTRY_ID === country_id
     );
     return selectedCountry?.COUNTRY_NAME;
+  }
+  function setCountriesAsOptions() {
+    const newCountryOptions = countries.map((country) => ({
+      value: country.COUNTRY_ID,
+      label: country.COUNTRY_NAME,
+    }));
+    setCountryOptions(newCountryOptions);
   }
 
   //Data functions
@@ -136,13 +151,16 @@ export default function Cities() {
             params.id !== undefined &&
             parseInt(params.id) === city.CITY_ID ? (
               <td>
-                <input
-                  type="number"
-                  placeholder="Country Id"
-                  value={countryId}
-                  onChange={(e) => changeCountryId(e)}
-                  className={style.editInput}
-                />
+                <select className={style.selectElement} value={countryId} onChange={(e) => changeCountryId(e)}>
+                  <option value={0} disabled>
+                    Country
+                  </option>
+                  {countries.map((country) => (
+                    <option value={country.COUNTRY_ID}>
+                      {country.COUNTRY_NAME}
+                    </option>
+                  ))}
+                </select>
               </td>
             ) : (
               <td>{findCountry(city.COUNTRY_ID)}</td>

@@ -26,6 +26,7 @@ export interface CITY {
 
 export interface DataInputConfig {
   name: string;
-  type: string;
-  placeholder: string;
+  type: "text" | "number" | "select";
+  placeholder?: string;
+  options?: { value: any; label: string }[];
 }

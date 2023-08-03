@@ -15,7 +15,9 @@ export default function CreateModal<T>({
   const navigate = useNavigate();
   const [formData, setFormData] = useState<T>({} as T);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
+  ) => {
     const { name, value } = { name: e.target.name, value: e.target.value };
     const updatedFormData: T = { ...formData, [name]: value };
     setFormData(updatedFormData);
@@ -24,7 +26,6 @@ export default function CreateModal<T>({
     e.preventDefault();
     try {
       const result = await createFunction(formData);
-      console.log(result);
       navigate(-1);
     } catch (error) {
       console.error("Error creating entity:", error);
@@ -41,13 +42,27 @@ export default function CreateModal<T>({
           onSubmit={handleSubmit}
         >
           {dataInputConfig.map((input) => (
-            <input
-              type={input.type}
-              name={input.name}
-              key={input.name}
-              placeholder={input.placeholder}
-              onChange={handleChange}
-            />
+            <div key={input.name}>
+              {input.type === "select" ? (
+                <select name={input.name} onChange={handleChange}>
+                  <option value={0} disabled>
+                    Select
+                  </option>
+                  {input.options?.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  type={input.type}
+                  name={input.name}
+                  placeholder={input.placeholder}
+                  onChange={handleChange}
+                />
+              )}
+            </div>
           ))}
           <div className={style.buttonContainer}>
             <button className={style.confirmButton} type="submit">

@@ -1,12 +1,12 @@
-export async function getCities(sql, config) {
-  const pool = await sql.connect(config);
+import sql from "mssql";
+
+export async function getCities(pool) {
   const result = await pool.request().query("SELECT * FROM CITIES");
   const dataset = result.recordset;
   return dataset;
 }
 
-export async function getCityById(sql, config, id) {
-  const pool = await sql.connect(config);
+export async function getCityById(pool, id) {
   const result = await pool
     .request()
     .input("city_id", sql.Int, id)
@@ -15,8 +15,7 @@ export async function getCityById(sql, config, id) {
   return dataset;
 }
 
-export async function createCity(sql, config, city_name, country_id) {
-  const pool = await sql.connect(config);
+export async function createCity(pool, city_name, country_id) {
   const result = await pool
     .request()
     .input("city_name", sql.VarChar, city_name)
@@ -28,8 +27,7 @@ export async function createCity(sql, config, city_name, country_id) {
   return object;
 }
 
-export async function updateCity(sql, config, city_id, city_name, country_id) {
-  const pool = await sql.connect(config);
+export async function updateCity(pool, city_id, city_name, country_id) {
   const result = await pool
     .request()
     .input("city_id", sql.Int, city_id)
@@ -42,8 +40,7 @@ export async function updateCity(sql, config, city_id, city_name, country_id) {
   return object;
 }
 
-export async function deleteCity(sql, config, city_id) {
-  const pool = await sql.connect(config);
+export async function deleteCity(pool, city_id) {
   const result = await pool
     .request()
     .input("city_id", sql.Int, city_id)
