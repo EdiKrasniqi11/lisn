@@ -1,0 +1,37 @@
+.optionsDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.iconContainer {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 5%;
+}
+.confirmSvg {
+  margin-right: 2%;
+}
+.cancelSvg {
+  margin-left: 2%;
+}
+.confirmSvg:hover {
+  fill: rgb(0, 89, 0);
+  cursor: pointer;
+}
+.cancelSvg:hover {
+  fill: rgb(101, 0, 0);
+  cursor: pointer;
+}
+.editInput {
+  width: 100%;
+  height: 90%;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.603);
+  border: none;
+  border-radius: 5px;
+}

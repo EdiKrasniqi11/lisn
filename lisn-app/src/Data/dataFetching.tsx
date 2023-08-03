@@ -1,26 +1,23 @@
 import axios, { AxiosResponse } from "axios";
-import USER_ROLE from "./Interfaces";
+import { CITY, COUNTRY, USER_ROLE, USER_STATE } from "./Interfaces";
+import { API_URL } from "./env_variables";
 
-// Define types for setData and setIsLoading
-type SetDataFunction<T> = React.Dispatch<React.SetStateAction<T>>;
-type SetIsLoadingFunction = React.Dispatch<React.SetStateAction<boolean>>;
-
-const fetchUserRoles = async (
-  setData: SetDataFunction<USER_ROLE[]>, // Replace YourDataInterface with the actual interface for your data
+//Set function template
+async function fetchTemplate<T extends { INSERT_DATE: Date }>(
+  path: string,
+  setData: SetDataFunction<T[]>,
   setIsLoading: SetIsLoadingFunction
-) => {
+) {
   try {
-    const response: AxiosResponse<USER_ROLE[]> = await axios.get(
-      "http://localhost:5001/user_roles",
-      {
-        onDownloadProgress: (progressEvent) => {
-          if (progressEvent.total !== undefined) {
-            const progress = (progressEvent.loaded / progressEvent.total) * 100;
-            console.log(`Download progress: ${progress.toFixed(2)}%`);
-          }
-        },
-      }
-    );
+    const apiUrl = `${API_URL}/${path}`;
+    const response: AxiosResponse<T[]> = await axios.get(apiUrl, {
+      onDownloadProgress: (progressEvent) => {
+        if (progressEvent.total !== undefined) {
+          const progress = (progressEvent.loaded / progressEvent.total) * 100;
+          console.log(`Download progress: ${progress.toFixed(2)}%`);
+        }
+      },
+    });
     for (const object of response.data) {
       const formatedDate = new Date(object.INSERT_DATE);
       object.INSERT_DATE = formatedDate;
@@ -31,6 +28,37 @@ const fetchUserRoles = async (
     console.error("Error fetching data:", error);
     setIsLoading(false);
   }
+}
+
+// Define types for setData and setIsLoading
+type SetDataFunction<T> = React.Dispatch<React.SetStateAction<T>>;
+type SetIsLoadingFunction = React.Dispatch<React.SetStateAction<boolean>>;
+
+// Data  functions
+export const fetchUserRoles = async (
+  setData: SetDataFunction<USER_ROLE[]>,
+  setIsLoading: SetIsLoadingFunction
+) => {
+  fetchTemplate<USER_ROLE>("user-roles", setData, setIsLoading);
 };
 
-export default fetchUserRoles;
+export const fetchUserStates = async (
+  setData: SetDataFunction<USER_STATE[]>,
+  setIsLoading: SetIsLoadingFunction
+) => {
+  fetchTemplate<USER_STATE>("user-states", setData, setIsLoading);
+};
+
+export const fetchCountries = async (
+  setData: SetDataFunction<COUNTRY[]>,
+  setIsLoading: SetIsLoadingFunction
+) => {
+  fetchTemplate<COUNTRY>("countries", setData, setIsLoading);
+};
+
+export const fetchCities = async (
+  setData: SetDataFunction<CITY[]>,
+  setIsLoading: SetIsLoadingFunction
+) => {
+  fetchTemplate<CITY>("cities", setData, setIsLoading);
+};

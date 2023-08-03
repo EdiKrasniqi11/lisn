@@ -1,0 +1,17 @@
+.dataPlaceholderDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.dataPlaceholderDiv h1 {
+  margin: 0;
+  font-size: 200%;
+}
+@media screen and (max-width: 1004px) {
+  .dataPlaceholderDiv h1 {
+    font-size: 150%;
+  }
+}

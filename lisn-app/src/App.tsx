@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
-import Sidebar from "./Components/Sidebar/Sidebar";
-import ThemeToggle from "./Components/Toggle/ThemeToggle";
+import Sidebar from "./Components/Home-Components/Sidebar/Sidebar";
+import ThemeToggle from "./Components/Home-Components/Toggle/ThemeToggle";
 import Messages from "./Pages/Messages/Messages";
 import AdminPage from "./Pages/AdminPage/AdminPage";
 
@@ -15,7 +15,7 @@ import {
   NavLink,
   Routes,
 } from "react-router-dom";
-import AdminRoute from "./Components/AdminRoute/AdminRoute";
+import AdminRoute from "./Components/Admin-Components/AdminRoute/AdminRoute";
 
 function App() {
   const [userRoles, setUserRoles] = useState<number[]>([]);
@@ -36,8 +36,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/admin-page/*" element={<AdminPage />} />
-          <Route path="/messages/*" element={<Messages />} />
+          <Route path="/admin-page/:table?/:function?/:id?" element={<AdminPage />} />
+          <Route path="/messages/:id?" element={<Messages />} />
         </Routes>
         <ThemeToggle />
         <AdminRoute />

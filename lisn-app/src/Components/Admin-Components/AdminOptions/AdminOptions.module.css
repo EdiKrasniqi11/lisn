@@ -1,0 +1,16 @@
+.optionsDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.iconContainer {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 5%;
+}
+.optionsDiv svg:hover,
+.optionsDiv svg:focus {
+  fill: rgba(255, 255, 255, 0.548);
+}

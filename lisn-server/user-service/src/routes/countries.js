@@ -2,12 +2,12 @@ import express from "express";
 import sql from "mssql";
 import dotenv from "dotenv";
 import {
-  getUserRoles,
-  getUserRoleById,
-  createUserRole,
-  deleteUserRole,
-  updateUserRole,
-} from "../queries/user_roles.js";
+  getCountries,
+  getCountryById,
+  createCountry,
+  deleteCountry,
+  updateCountry,
+} from "../queries/countries.js";
 
 dotenv.config();
 const config = {
@@ -24,8 +24,8 @@ const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const userRoles = await getUserRoles(sql, config);
-    res.send(200, userRoles);
+    const countries = await getCountries(sql, config);
+    res.send(200, countries);
   } catch (error) {
     res.send(error);
     next(error);
@@ -36,11 +36,11 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const userRole = await getUserRoleById(sql, config, req.params.id);
-    if (userRole === null || userRole === {}) {
-      res.send(404, "User role with id " + req.params.id + " does not exist.");
+    const country = await getCountryById(sql, config, req.params.id);
+    if (country === null || country === {}) {
+      res.send(404, "Country with id " + req.params.id + " does not exist.");
     } else {
-      res.send(200, userRole);
+      res.send(200, country);
     }
   } catch (error) {
     res.send(400, error);
@@ -52,7 +52,12 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const result = await createUserRole(sql, config, req.body.ROLE_NAME);
+    const result = await createCountry(
+      sql,
+      config,
+      req.body.COUNTRY_NAME,
+      req.body.COUNTRY_ICON
+    );
     res.send(200, result);
   } catch (error) {
     res.send(400, error);
@@ -64,11 +69,12 @@ router.post("/", async (req, res, next) => {
 
 router.put("/", async (req, res, next) => {
   try {
-    const result = await updateUserRole(
+    const result = await updateCountry(
       sql,
       config,
-      req.body.ROLE_ID,
-      req.body.ROLE_NAME
+      req.body.COUNTRY_ID,
+      req.body.COUNTRY_NAME,
+      req.body.COUNTRY_ICON
     );
     res.send(200, result);
   } catch {
@@ -80,9 +86,9 @@ router.put("/", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
-    const result = await deleteUserRole(sql, config, req.params.id);
+    const result = await deleteCountry(sql, config, req.params.id);
     if (result === null || result === {}) {
-      res.send(404, "ROLE with id:" + req.params.id + " DOES NOT EXIST.");
+      res.send(404, "Country with id:" + req.params.id + " DOES NOT EXIST.");
     }
     res.send(200, result);
   } catch (error) {

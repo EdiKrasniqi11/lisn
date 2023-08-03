@@ -2,12 +2,12 @@ import express from "express";
 import sql from "mssql";
 import dotenv from "dotenv";
 import {
-  getUserRoles,
-  getUserRoleById,
-  createUserRole,
-  deleteUserRole,
-  updateUserRole,
-} from "../queries/user_roles.js";
+  getCities,
+  getCityById,
+  createCity,
+  deleteCity,
+  updateCity,
+} from "../queries/cities.js";
 
 dotenv.config();
 const config = {
@@ -24,8 +24,8 @@ const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const userRoles = await getUserRoles(sql, config);
-    res.send(200, userRoles);
+    const cities = await getCities(sql, config);
+    res.send(200, cities);
   } catch (error) {
     res.send(error);
     next(error);
@@ -36,9 +36,9 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const userRole = await getUserRoleById(sql, config, req.params.id);
-    if (userRole === null || userRole === {}) {
-      res.send(404, "User role with id " + req.params.id + " does not exist.");
+    const city = await getCityById(sql, config, req.params.id);
+    if (city === null || city === {}) {
+      res.send(404, "City with id " + req.params.id + " does not exist.");
     } else {
       res.send(200, userRole);
     }
@@ -52,7 +52,12 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const result = await createUserRole(sql, config, req.body.ROLE_NAME);
+    const result = await createCity(
+      sql,
+      config,
+      req.body.CITY_NAME,
+      req.body.COUNTRY_ID
+    );
     res.send(200, result);
   } catch (error) {
     res.send(400, error);
@@ -64,11 +69,12 @@ router.post("/", async (req, res, next) => {
 
 router.put("/", async (req, res, next) => {
   try {
-    const result = await updateUserRole(
+    const result = await updateCity(
       sql,
       config,
-      req.body.ROLE_ID,
-      req.body.ROLE_NAME
+      req.body.CITY_ID,
+      req.body.CITY_NAME,
+      req.body.COUNTRY_ID
     );
     res.send(200, result);
   } catch {
@@ -80,9 +86,9 @@ router.put("/", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
-    const result = await deleteUserRole(sql, config, req.params.id);
+    const result = await deleteCity(sql, config, req.params.id);
     if (result === null || result === {}) {
-      res.send(404, "ROLE with id:" + req.params.id + " DOES NOT EXIST.");
+      res.send(404, "City with id:" + req.params.id + " DOES NOT EXIST.");
     }
     res.send(200, result);
   } catch (error) {

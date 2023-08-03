@@ -14,6 +14,7 @@
   font-family: "Josefin Sans", sans-serif;
 }
 .contentDiv {
+  position: relative;
   width: 64%;
   height: 87vh;
   color: rgb(212, 212, 212);
@@ -57,4 +58,6 @@
   height: 75%;
   margin-top: 2%;
   padding: 2%;
+  overflow: hidden;
+  overflow-y: auto;
 }

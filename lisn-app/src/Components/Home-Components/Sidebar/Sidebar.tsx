@@ -1,5 +1,5 @@
 import style from "./Sidebar.module.css";
-import Views from "../../Assets/Images/Views.jpg";
+import Views from "../../../Assets/Images/Views.jpg";
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 
