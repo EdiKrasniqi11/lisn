@@ -24,9 +24,23 @@ export interface CITY {
   INSERT_DATE: Date;
 }
 
+export interface USER {
+  USER_ID?: string;
+  USERNAME?: string;
+  USER_EMAIL?: string;
+  USER_IMG?: string;
+  USER_PASSWORD?: string;
+  BIRTH_DATE?: Date;
+  GENDER?: string;
+  USER_CITY_ID?: number;
+  USER_ROLE_ID?: number;
+  USER_STATE_ID?: number;
+  INSERT_DATE: Date;
+}
+
 export interface DataInputConfig {
   name: string;
-  type: "text" | "number" | "select";
+  type: "text" | "number" | "select" | "password" | "file" | "email" | "date";
   placeholder?: string;
-  options?: { value: any; label: string }[];
+  options?: { value: any; label: any }[];
 }

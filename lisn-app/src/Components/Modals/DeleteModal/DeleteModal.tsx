@@ -1,20 +1,26 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import style from "./DeleteModal.module.css";
+import { useEffect, useState } from "react";
 
 interface DeleteModalProps {
   objectName: string;
-  deleteFunction: (id: number) => Promise<void>;
+  deleteFunction: (id: any) => Promise<void>;
 }
 
 export default function DeleteModal({
   objectName,
   deleteFunction,
 }: DeleteModalProps) {
+  const params = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const locationPath = location.pathname.split("/");
-  const id = parseInt(locationPath[4]);
+  const [id, setId] = useState<any>();
+
+  useEffect(() => {
+    setId(params.id);
+  }, [params]);
 
   const deleteObject = async (id: any) => {
     await deleteFunction(id);

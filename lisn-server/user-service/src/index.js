@@ -6,6 +6,8 @@ import user_role_routes from "./routes/user_roles.js";
 import user_state_routes from "./routes/user_states.js";
 import country_routes from "./routes/countries.js";
 import city_routes from "./routes/cities.js";
+import user_routes from "./routes/users.js";
+import authentication_routes from "./routes/user_authentication.js";
 
 dotenv.config();
 const app = express();
@@ -22,6 +24,8 @@ app.use("/user-roles", user_role_routes);
 app.use("/user-states", user_state_routes);
 app.use("/countries", country_routes);
 app.use("/cities", city_routes);
+app.use("/users", user_routes);
+app.use("/authentication", authentication_routes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the LISN User Service center");

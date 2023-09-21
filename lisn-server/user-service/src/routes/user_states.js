@@ -1,6 +1,7 @@
 import express from "express";
 import sql from "mssql";
 import dotenv from "dotenv";
+import { authenticateAdminToken } from "../middleware/tokenAuthentication.js";
 import {
   createUserState,
   deleteUserState,
@@ -24,7 +25,7 @@ const router = express.Router();
 const pool = new sql.ConnectionPool(config);
 const poolConnect = pool.connect();
 
-router.get("/", async (req, res, next) => {
+router.get("/", authenticateAdminToken, async (req, res, next) => {
   try {
     await poolConnect;
     const userStates = await getUserStates(pool);
@@ -35,7 +36,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", authenticateAdminToken, async (req, res, next) => {
   try {
     await poolConnect;
     const id = req.params.id;
@@ -47,7 +48,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", authenticateAdminToken, async (req, res, next) => {
   try {
     await poolConnect;
     const state_name = req.body.STATE_NAME;
@@ -59,7 +60,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.put("/", async (req, res, next) => {
+router.put("/", authenticateAdminToken, async (req, res, next) => {
   try {
     await poolConnect;
     const state_id = req.body.STATE_ID;
@@ -72,7 +73,7 @@ router.put("/", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", authenticateAdminToken, async (req, res, next) => {
   try {
     await poolConnect;
     const state_id = req.params.id;

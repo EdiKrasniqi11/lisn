@@ -1,0 +1,51 @@
+.backgroundDiv {
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--secondary-color);
+  background: radial-gradient(
+    circle at 90% 190%,
+    var(--main-color) 0%,
+    var(--secondary-color) 49%,
+    var(--main-color) 70%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Josefin Sans", sans-serif;
+}
+.noContentDiv {
+  position: relative;
+  width: 64%;
+  height: 87vh;
+  color: rgb(212, 212, 212);
+  font-family: "Josefin Sans", sans-serif;
+  background-color: rgba(34, 34, 34, 0.407);
+  box-shadow: 0px 0px 30px 10px rgba(1, 19, 77, 0.662);
+  margin-top: 2%;
+  border-radius: 5px;
+  padding-block: 20px;
+  padding-inline: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.noContentDiv h2 {
+  margin: 0;
+}
+.noContentDiv a {
+  text-decoration: none;
+  color: inherit;
+  background-color: rgb(0, 177, 62);
+  border-radius: 5px;
+  border: 2px solid rgb(212, 212, 212);
+  padding: 1% 2%;
+  transition: background-color 0.2s ease-in-out;
+}
+.noContentDiv a:hover {
+  background-color: rgb(0, 140, 49);
+}

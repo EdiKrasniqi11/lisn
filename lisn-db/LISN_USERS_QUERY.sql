@@ -34,9 +34,14 @@ create table USERS (
 	USER_IMG varchar(255),
 	USER_PASSWORD varchar(255),
 	BIRTH_DATE date,
+	GENDER CHAR(1) CHECK (GENDER IN ('M', 'F', 'O')),
 	USER_CITY_ID int foreign key references CITIES(CITY_ID),
 	USER_ROLE_ID int foreign key references USER_ROLES(ROLE_ID),
 	USER_STATE_ID int foreign key references USER_STATES(STATE_ID),
 	UNSUCCESSFUL_LOGIN_ATTEMPTS int default 0,
-	CREATED_DATE datetime default CURRENT_TIMESTAMP,
+	INSERT_DATE datetime default CURRENT_TIMESTAMP,
+)
+
+create table REFRESH_TOKENS (
+	TOKEN varchar(255) primary key
 )

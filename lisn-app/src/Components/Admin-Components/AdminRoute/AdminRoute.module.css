@@ -1,19 +1,42 @@
-.wrenchDiv {
+.quickMenu {
   position: fixed;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   top: 5%;
-  left: 95%;
+  left: 90%;
+  width: 10%;
+}
+.wrenchDiv {
   color: white;
   background-color: rgba(34, 34, 34, 0.482);
-  padding: 0.5%;
+  padding: 4%;
   border-radius: 25px;
 }
 .wrenchDiv svg {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: fill 0.3s ease-in-out;
 }
 .wrenchDiv svg:hover,
 .wrenchDiv:focus {
   fill: rgba(255, 255, 255, 0.692);
+}
+.logoutDiv {
+  background-color: rgba(34, 34, 34, 0.482);
+  padding: 4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+}
+.logoutDiv svg {
+  fill: maroon;
+  cursor: pointer;
   transition: fill 0.3s ease-in-out;
+}
+.logoutDiv svg:hover,
+.logoutDiv svg:focus {
+  fill: rgba(128, 0, 0, 0.704);
 }

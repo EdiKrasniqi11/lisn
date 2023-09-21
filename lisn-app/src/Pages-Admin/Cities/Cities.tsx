@@ -10,7 +10,6 @@ import AdminOptions from "../../Components/Admin-Components/AdminOptions/AdminOp
 import AdminEditOptions from "../../Components/Admin-Components/AdminEditOptions/AdminEditOptions";
 import DeleteModal from "../../Components/Modals/DeleteModal/DeleteModal";
 import CreateModal from "../../Components/Modals/CreateModal/CreateModal";
-import { getCountryById } from "../../Data/dataFetchingById";
 
 export default function Cities() {
   const params = useParams();
@@ -109,6 +108,7 @@ export default function Cities() {
   const updateExistingCity = async (entity: CITY) => {
     if (entity !== undefined) {
       const result: any = await updateCity(entity);
+      console.log(result);
       return result;
     }
   };
@@ -151,7 +151,11 @@ export default function Cities() {
             params.id !== undefined &&
             parseInt(params.id) === city.CITY_ID ? (
               <td>
-                <select className={style.selectElement} value={countryId} onChange={(e) => changeCountryId(e)}>
+                <select
+                  className={style.selectElement}
+                  value={countryId}
+                  onChange={(e) => changeCountryId(e)}
+                >
                   <option value={0} disabled>
                     Country
                   </option>
