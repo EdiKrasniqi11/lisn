@@ -17,29 +17,11 @@ import {
 } from "react-router-dom";
 import AdminRoute from "./Components/Admin-Components/AdminRoute/AdminRoute";
 import NoContent from "./Pages/NoContent/NoContent";
-import { refreshToken } from "./Data/authentication";
-import secureLocalStorage from "react-secure-storage";
+import MyProfile from "./Pages/MyProfile/MyProfile";
+import Search from "./Pages/Search/Search";
 
 function App() {
   useEffect(() => {
-    const fetchResponse = async () => {
-      try {
-        const response = await refreshToken();
-        if (response.data.status !== 200) {
-          console.error(
-            `Error code ${response.data.status}. ${response.data.message}`
-          );
-        }
-        secureLocalStorage.setItem("access-token", response.data.ACCESS_TOKEN);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    setInterval(() => {
-      if (secureLocalStorage.getItem("refresh-token") !== undefined) {
-        fetchResponse();
-      }
-    }, 600000);
     document.title = "LISN - Free Music Sharing Website";
   }, []);
 
@@ -51,6 +33,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/my-profile/:function?" element={<MyProfile />} />
+          <Route path="/search" element={<Search />} />
           <Route
             path="/admin-page/:service?/:table?/:function?/:id?"
             element={<AdminPage />}

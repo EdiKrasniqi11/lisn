@@ -1,0 +1,83 @@
+.profilePicture {
+  border: 2px solid transparent;
+  position: relative;
+  height: 128px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+.imageContainer {
+  height: 128px;
+  aspect-ratio: 1;
+  border-radius: 500%;
+  border: 2px solid rgb(94, 94, 94);
+  overflow: hidden;
+}
+#profileImage {
+  height: 100%;
+  width: 100%;
+}
+.noImageFound {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.inputImage::-webkit-file-upload-button {
+  height: 128px;
+  aspect-ratio: 1;
+  border-radius: 500%;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background-color: transparent;
+  color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+.inputImage {
+  height: 128px;
+  width: 128px;
+  color: transparent;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+}
+.updatePicture h4,
+.updatePictureNoHover h4 {
+  padding: 0;
+  margin: 0;
+}
+.updatePicture {
+  background-color: rgba(0, 0, 0, 0.437);
+  border-radius: 50%;
+  border: 2px solid rgb(180, 180, 180);
+  height: 128px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+}
+.updatePictureNoHover {
+  border-radius: 50%;
+  border: 2px solid rgb(94, 94, 94);
+  height: 128px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.profilePicture:hover .updatePicture {
+  visibility: visible;
+}

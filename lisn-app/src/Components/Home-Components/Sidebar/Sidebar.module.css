@@ -5,6 +5,7 @@
   height: 100%;
   padding-block: 2.5%;
   background-color: rgba(34, 34, 34, 0.636);
+  z-index: 999;
 }
 .staticNav {
   height: 30%;
@@ -22,7 +23,7 @@
 #playlistButton {
   transition: box-shadow 0.3s ease-in-out;
 }
-#sidebarButton:hover {
+.sidebarIcon:hover {
   cursor: pointer;
   fill: rgb(180, 180, 180);
 }

@@ -18,9 +18,16 @@ export default function CreateModal<T>({
   const handleChange = (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
   ) => {
-    const { name, value } = { name: e.target.name, value: e.target.value };
-    const updatedFormData: T = { ...formData, [name]: value };
-    setFormData(updatedFormData);
+    const { name, value } = e.target;
+    if (e.target.type === "file") {
+      const file = (e.target as HTMLInputElement).files?.[0];
+
+      const updatedFormData: T = { ...formData, [name]: file };
+      setFormData(updatedFormData);
+    } else {
+      const updatedFormData: T = { ...formData, [name]: value };
+      setFormData(updatedFormData);
+    }
   };
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,6 +47,7 @@ export default function CreateModal<T>({
           method="POST"
           className={style.createForm}
           onSubmit={handleSubmit}
+          encType="multipart/form-data"
         >
           {dataInputConfig.map((input) => (
             <div key={input.name}>

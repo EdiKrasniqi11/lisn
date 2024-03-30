@@ -1,7 +1,6 @@
 .login {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
-  background: var(--third-color);
   background: radial-gradient(
     circle at 90% 190%,
     var(--main-color) 0%,
@@ -12,6 +11,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.login h1 {
+  margin-bottom: 2%;
 }
 .loginForm {
   width: 44%;

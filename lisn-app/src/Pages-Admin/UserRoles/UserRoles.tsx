@@ -20,7 +20,7 @@ export default function UserRoles() {
   const objectName = "User Role";
   const stateInputConfig: DataInputConfig[] = [
     {
-      name: "ROLE_NAME",
+      name: "role_name",
       type: "text",
       placeholder: "Role name",
     },
@@ -33,12 +33,11 @@ export default function UserRoles() {
     fetchUserRoles(setUserRoles, setIsLoading);
     if (params.function === "edit-content") {
       const editRole = userRoles.find(
-        (role) =>
-          params.id !== undefined && role.ROLE_ID === parseInt(params.id)
+        (role) => params.id !== undefined && role._id === params.id
       );
       if (editRole !== undefined) {
         setEditableRole(editRole);
-        setRoleName(editRole.ROLE_NAME);
+        setRoleName(editRole.role_name);
       }
     }
   }, [params]);
@@ -46,13 +45,13 @@ export default function UserRoles() {
   const changeRoleName = (e: ChangeEvent<HTMLInputElement>) => {
     setRoleName(e.target.value);
     if (editableRole !== undefined) {
-      const newEditableRole = { ...editableRole, ROLE_NAME: e.target.value };
+      const newEditableRole = { ...editableRole, role_name: e.target.value };
       setEditableRole(newEditableRole);
     }
   };
 
   //Data functions
-  const deleteUserRoleById = async (ROLE_ID: number) => {
+  const deleteUserRoleById = async (ROLE_ID: string) => {
     await deleteUserRole(ROLE_ID);
   };
   const updateRole = async (entity: USER_ROLE) => {
@@ -70,7 +69,6 @@ export default function UserRoles() {
     <table className={style.dataTable}>
       <thead>
         <tr>
-          <th>ID</th>
           <th>ROLE_NAME</th>
           <th>INSERT_DATE</th>
           <th>OPTIONS</th>
@@ -78,11 +76,10 @@ export default function UserRoles() {
       </thead>
       <tbody>
         {userRoles.map((role) => (
-          <tr key={role.ROLE_ID}>
-            <td>{role.ROLE_ID}</td>
+          <tr key={role._id}>
             {params.function === "edit-content" &&
             params.id !== undefined &&
-            parseInt(params.id) === role.ROLE_ID ? (
+            params.id === role._id ? (
               <td>
                 <input
                   type="text"
@@ -93,15 +90,15 @@ export default function UserRoles() {
                 />
               </td>
             ) : (
-              <td>{role.ROLE_NAME}</td>
+              <td>{role.role_name}</td>
             )}
-            <td>{role.INSERT_DATE.toLocaleDateString()}</td>
+            <td>{role.createdAt.toLocaleDateString()}</td>
             <td>
               {params.function === undefined ? (
-                <AdminOptions id={role.ROLE_ID} />
+                <AdminOptions id={role._id} />
               ) : params.function === "edit-content" &&
                 params.id !== undefined &&
-                parseInt(params.id) === role.ROLE_ID ? (
+                params.id === role._id ? (
                 <AdminEditOptions<USER_ROLE>
                   updateFunction={updateRole}
                   updatedObject={editableRole}

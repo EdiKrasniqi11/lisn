@@ -1,8 +1,6 @@
 .messages {
-  padding-left: 5%;
-  height: 100vh;
-  width: 95%;
-  background: var(--secondary-color);
+  min-height: 100vh;
+  width: 100vw;
   background: radial-gradient(
     circle at 90% 190%,
     var(--main-color) 0%,
@@ -12,9 +10,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: left;
 }
 .messageContainer {
-  width: 90%;
+  width: 75%;
   height: 100%;
   color: rgb(212, 212, 212);
   font-family: "Josefin Sans", sans-serif;

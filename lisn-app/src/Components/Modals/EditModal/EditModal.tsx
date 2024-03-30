@@ -30,7 +30,7 @@ export default function EditModal<T>({
     fetchData();
   }, [params]);
   useEffect(() => {
-    const foundUser = users.find((user) => user.USER_ID === params.id);
+    const foundUser = users.find((user) => user._id === params.id);
     if (foundUser) {
       setUser(foundUser);
       setFormData(foundUser as T);
@@ -99,9 +99,9 @@ export default function EditModal<T>({
                 <input
                   type={input.type}
                   name={input.name}
-                  defaultValue={
-                    user ? formatValue(user[input.name as keyof USER]) : ""
-                  }
+                  // defaultValue={
+                  //   user ? formatValue(user[input.name as keyof USER]) : ""
+                  // }
                   placeholder={input.placeholder}
                   onChange={handleChange}
                 />

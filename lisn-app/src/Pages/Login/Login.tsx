@@ -14,9 +14,10 @@ export default function Login() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const user: USER = {
-      USERNAME: username,
-      USER_PASSWORD: password,
-      INSERT_DATE: new Date(),
+      username: username,
+      user_password: password,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     };
     const response = await login(user);
 
@@ -24,7 +25,7 @@ export default function Login() {
       navigate("/");
       window.location.reload();
     } else {
-      alert(alert(response.message));
+      alert(response.message);
     }
   };
 
@@ -35,7 +36,7 @@ export default function Login() {
         onSubmit={(e) => handleSubmit(e)}
         className={style.loginForm}
       >
-        <h1>Login with existing account</h1>
+        <h1>Login</h1>
         <label className={style.inputLabel}>email/username</label>
         <input
           type="text"

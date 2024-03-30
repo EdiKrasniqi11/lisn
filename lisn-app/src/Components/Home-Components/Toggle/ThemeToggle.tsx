@@ -2,7 +2,7 @@ import { useEffect } from "react";
 export default function ThemeToggle() {
   useEffect(() => {
     if (
-      sessionStorage.getItem("theme") == "dark" ||
+      sessionStorage.getItem("theme") === "dark" ||
       sessionStorage.getItem("theme") == null
     ) {
       sessionStorage.setItem("theme", "light");
@@ -37,12 +37,8 @@ export default function ThemeToggle() {
         "rgb(0, 0, 71)"
       );
       document.documentElement.style.setProperty(
-        "--third-color",
-        "rgb(0, 66, 22)"
-      );
-      document.documentElement.style.setProperty(
         "--link-color",
-        "rgb(0, 48, 145);"
+        "rgb(0, 65, 194)"
       );
       var toggleSwitch = document.getElementById("toggle");
       if (toggleSwitch != null) {
@@ -65,10 +61,6 @@ export default function ThemeToggle() {
         "rgb(147, 147, 255)"
       );
       document.documentElement.style.setProperty(
-        "--third-color",
-        "rgba(0, 165, 55, 0.675)"
-      );
-      document.documentElement.style.setProperty(
         "--link-color",
         "rgb(0, 0, 0)"
       );
@@ -87,12 +79,8 @@ export default function ThemeToggle() {
         "rgb(0, 0, 71)"
       );
       document.documentElement.style.setProperty(
-        "--third-color",
-        "rgb(0, 66, 22)"
-      );
-      document.documentElement.style.setProperty(
         "--link-color",
-        "rgb(0, 177, 62)"
+        "rgb(0, 65, 194)"
       );
       var toggleSwitch = document.getElementById("toggle");
       if (toggleSwitch != null) {

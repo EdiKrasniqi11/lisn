@@ -1,78 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
-.home{
-    height:100vh;
-    width:100vw;
-    background: var(--secondary-color);
-    background: radial-gradient(circle at 90% 190%, var(--main-color) 0%, var(--secondary-color) 49%, var(--main-color) 70%);
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+.home {
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--secondary-color);
+  background: radial-gradient(
+    circle at 90% 190%,
+    var(--main-color) 0%,
+    var(--secondary-color) 49%,
+    var(--main-color) 70%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.announcementDiv{
-    background-image: url('../../Assets/Images/AnnouncementDivBackgroundImage.png');
-    border-radius:5px;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding-top:2%;
-    padding-bottom:2%;
-    height:20%;
-    margin-top:1.5%;
-    width: 70%;
-    color:rgb(212, 212, 212);
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 2.7rem;
-    display:flex;
-    justify-content:center;
-    align-items: center;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    box-shadow: 0px 0px 30px 10px rgba(1, 19, 77, 0.662);
+.announcementDiv {
+  background-image: url("../../Assets/Images/AnnouncementDivBackgroundImage.png");
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  height: 20%;
+  margin-top: 1.5%;
+  width: 70%;
+  color: rgb(212, 212, 212);
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 2.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-shadow: 0px 0px 30px 10px rgba(1, 19, 77, 0.662);
 }
-.playlistsContainer{
-    width:64%;
-    color:rgb(212, 212, 212);
-    font-family: 'Josefin Sans', sans-serif;
-    background-color:rgba(34, 34, 34, 0.636);
-    box-shadow: 0px 0px 30px 10px rgba(1, 19, 77, 0.662);
-    margin-top:2%;
-    border-radius:5px;
-    padding-block: 20px;
-    padding-inline: 3%;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.playlistsContainer {
+  width: 64%;
+  color: rgb(212, 212, 212);
+  font-family: "Josefin Sans", sans-serif;
+  background-color: rgba(34, 34, 34, 0.636);
+  box-shadow: 0px 0px 30px 10px rgba(1, 19, 77, 0.662);
+  margin-top: 2%;
+  border-radius: 5px;
+  padding-block: 20px;
+  padding-inline: 3%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.playlists{
-    display:flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.playlists {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-.playlist{
-    position:relative;
-    height: 100px;
-    margin-bottom:20px;
-    width:49%;
-    border-radius:5px;
-    background-color: rgb(60, 60, 60);
-    display: flex;
-    align-items: center;
-    color:rgb(188, 194, 213);
-    transition: background-color 0.3s ease-in-out;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.playlist {
+  position: relative;
+  height: 100px;
+  margin-bottom: 20px;
+  width: 49%;
+  border-radius: 5px;
+  background-color: rgb(60, 60, 60);
+  display: flex;
+  align-items: center;
+  color: rgb(188, 194, 213);
+  transition: background-color 0.3s ease-in-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.playlist:hover{
-    background-color: rgb(65, 65, 65);
-    cursor:pointer;
+.playlist:hover {
+  background-color: rgb(65, 65, 65);
+  cursor: pointer;
 }
-.playlistImage{
-    height:100%;
-    aspect-ratio:1;
-    border-radius:5px 0px 0px 5px;
-    margin-right:10px;
+.playlistImage {
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 5px 0px 0px 5px;
+  margin-right: 10px;
 }

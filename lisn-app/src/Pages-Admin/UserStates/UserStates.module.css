@@ -10,8 +10,8 @@
   border-bottom: 1px solid white;
   position: relative;
 }
-.dataTable td:nth-child(4n),
-.dataTable th:nth-child(4) {
+.dataTable td:nth-child(3n),
+.dataTable th:nth-child(3) {
   border-right: none;
 }
 .dataTable tr:last-child td {

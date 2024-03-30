@@ -4,22 +4,23 @@ import UserRoles from "../../Pages-Admin/UserRoles/UserRoles";
 import DataPlaceholder from "../../Components/Admin-Components/DataPlaceholder/DataPlaceholder";
 import UserStates from "../../Pages-Admin/UserStates/UserStates";
 import CreateButton from "../../Components/Admin-Components/CreateButton/CreateButton";
-import Countries from "../../Pages-Admin/Countries/Countries";
-import Cities from "../../Pages-Admin/Cities/Cities";
 import UserNavBar from "../../Components/Admin-Components/UserNavBar/UserNavBar";
 import { useEffect, useState } from "react";
-import { USER } from "../../Data/Interfaces";
+import { LoggedUser } from "../../Data/Interfaces";
 import { fetchMyUser } from "../../Data/authentication";
 import Users from "../../Pages-Admin/Users/Users";
+import LoadingPage from "../../Components/Home-Components/Loading/LoadingPage";
 
 export default function AdminPage() {
   const params = useParams();
-  const [user, setUser] = useState<USER>();
+  const [user, setUser] = useState<LoggedUser>();
+  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const myUser: USER = await fetchMyUser();
+        const myUser: LoggedUser = await fetchMyUser();
         setUser(myUser);
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -28,7 +29,8 @@ export default function AdminPage() {
   }, []);
   return (
     <div className={style.adminDiv}>
-      {user?.USER_ROLE_ID === 1 ? (
+      {loading ? <LoadingPage /> : null}
+      {user?.role === "Admin" ? (
         <div className={style.contentDiv}>
           <div className={style.titleSwitch}>
             <NavLink to="/admin-page">
@@ -50,8 +52,6 @@ export default function AdminPage() {
             {params.table === undefined ? <DataPlaceholder /> : null}
             {params.table === "user-roles" ? <UserRoles /> : null}
             {params.table === "user-states" ? <UserStates /> : null}
-            {params.table === "countries" ? <Countries /> : null}
-            {params.table === "cities" ? <Cities /> : null}
             {params.table === "users" ? <Users /> : null}
             {params.function === undefined && params.table !== undefined ? (
               <CreateButton />

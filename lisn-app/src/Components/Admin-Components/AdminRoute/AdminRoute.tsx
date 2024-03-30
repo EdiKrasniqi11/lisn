@@ -1,23 +1,20 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import style from "./AdminRoute.module.css";
 import { fetchMyUser, logout } from "../../../Data/authentication";
-import secureLocalStorage from "react-secure-storage";
 import { useEffect, useState } from "react";
-import { USER } from "../../../Data/Interfaces";
+import { LoggedUser } from "../../../Data/Interfaces";
 
 export default function AdminRoute() {
   const navigate = useNavigate();
-  const [user, setUser] = useState<USER>();
+  const [user, setUser] = useState<LoggedUser>();
 
   useEffect(() => {
     const fetchData = async () => {
-      if (secureLocalStorage.getItem("access-token") !== null) {
-        try {
-          const myUser: USER = await fetchMyUser();
-          setUser(myUser);
-        } catch (error) {
-          console.error(error);
-        }
+      try {
+        const myUser: LoggedUser = await fetchMyUser();
+        setUser(myUser);
+      } catch (error) {
+        console.error(error);
       }
     };
     fetchData();
@@ -39,13 +36,13 @@ export default function AdminRoute() {
 
   return (
     <div className={style.quickMenu}>
-      {user?.USER_ROLE_ID === 1 ? (
+      {user?.role === "Admin" ? (
         <div className={style.wrenchDiv}>
           <NavLink title="Administrative Tools" to="/admin-page">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
+              width="25"
+              height="25"
               fill="white"
               className="bi bi-wrench-adjustable-circle-fill"
               viewBox="0 0 16 16"
@@ -60,13 +57,13 @@ export default function AdminRoute() {
         <div className={style.logoutDiv} title="Logout" onClick={handleLogout}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
+            width="25"
+            height="25"
             fill="currentColor"
-            className="bi bi-door-open-fill"
+            className="bi bi-door-closed-fill"
             viewBox="0 0 16 16"
           >
-            <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
+            <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
           </svg>
         </div>
       ) : null}

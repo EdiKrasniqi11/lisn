@@ -20,7 +20,7 @@ export default function UserStates() {
   const objectName = "User State";
   const stateInputConfig: DataInputConfig[] = [
     {
-      name: "STATE_NAME",
+      name: "state_name",
       type: "text",
       placeholder: "State name",
     },
@@ -33,12 +33,11 @@ export default function UserStates() {
     fetchUserStates(setUserStates, setIsLoading);
     if (params.function === "edit-content") {
       const editState = userStates.find(
-        (state) =>
-          params.id !== undefined && state.STATE_ID === parseInt(params.id)
+        (state) => params.id !== undefined && state._id === params.id
       );
       if (editState !== undefined) {
         setEditableState(editState);
-        setStateName(editState.STATE_NAME);
+        setStateName(editState.state_name);
       }
     }
   }, [params]);
@@ -53,7 +52,7 @@ export default function UserStates() {
   };
 
   //Data Functions
-  const deleteUserStateById = async (STATE_ID: number) => {
+  const deleteUserStateById = async (STATE_ID: string) => {
     await deleteUserState(STATE_ID);
   };
   const updateState = async (entity: USER_STATE) => {
@@ -69,7 +68,6 @@ export default function UserStates() {
     <table className={style.dataTable}>
       <thead>
         <tr>
-          <th>ID</th>
           <th>STATE_NAME</th>
           <th>INSERT_DATE</th>
           <th>OPTIONS</th>
@@ -77,11 +75,10 @@ export default function UserStates() {
       </thead>
       <tbody>
         {userStates.map((state) => (
-          <tr key={state.STATE_ID}>
-            <td>{state.STATE_ID}</td>
+          <tr key={state._id}>
             {params.function === "edit-content" &&
             params.id !== undefined &&
-            parseInt(params.id) === state.STATE_ID ? (
+            params.id === state._id ? (
               <td>
                 <input
                   type="text"
@@ -92,15 +89,15 @@ export default function UserStates() {
                 />
               </td>
             ) : (
-              <td>{state.STATE_NAME}</td>
+              <td>{state.state_name}</td>
             )}
-            <td>{state.INSERT_DATE.toLocaleDateString()}</td>
+            <td>{state.createdAt.toLocaleDateString()}</td>
             <td>
               {params.function === undefined ? (
-                <AdminOptions id={state.STATE_ID} />
+                <AdminOptions id={state._id} />
               ) : params.function === "edit-content" &&
                 params.id !== undefined &&
-                parseInt(params.id) === state.STATE_ID ? (
+                params.id === state._id ? (
                 <AdminEditOptions<USER_STATE>
                   updateFunction={updateState}
                   updatedObject={editableState}

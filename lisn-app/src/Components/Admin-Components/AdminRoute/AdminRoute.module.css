@@ -32,11 +32,11 @@
   border-radius: 25px;
 }
 .logoutDiv svg {
-  fill: maroon;
+  fill: white;
   cursor: pointer;
   transition: fill 0.3s ease-in-out;
 }
 .logoutDiv svg:hover,
 .logoutDiv svg:focus {
-  fill: rgba(128, 0, 0, 0.704);
+  fill: rgba(103, 0, 0, 0.704);
 }

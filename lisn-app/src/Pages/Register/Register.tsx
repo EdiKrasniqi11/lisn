@@ -2,8 +2,8 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import style from "./Register.module.css";
 import googleLogo from "../../Assets/Images/google-logo.png";
 import { LoginSocialGoogle } from "reactjs-social-login";
-import { CITY, COUNTRY, USER } from "../../Data/Interfaces";
-import { fetchCities, fetchCountries } from "../../Data/dataFetching";
+import { COUNTRY, USER } from "../../Data/Interfaces";
+import { fetchCountries } from "../../Data/dataFetching";
 import { registerUser } from "../../Data/dataCreating";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../Data/authentication";
@@ -16,20 +16,17 @@ export default function Register() {
   const [years, setYears] = useState<number[]>([]);
 
   const [countries, setCountries] = useState<COUNTRY[]>([]);
-  const [cities, setCities] = useState<CITY[]>([]);
-  const [filteredCities, setFilteredCities] = useState<CITY[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [userRegistered, setUserRegistered] = useState(false);
 
   const [email, setEmail] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [day, setDay] = useState<number>(0);
   const [month, setMonth] = useState<number>(0);
   const [year, setYear] = useState<number>(0);
-  const [gender, setGender] = useState<string>("");
-  const [country, setCountry] = useState<number>(0);
-  const [city, setCity] = useState<number>(0);
+  const [country, setCountry] = useState<string>("");
 
   useEffect(() => {
     setMonths(Array.from({ length: 12 }, (_, index) => index + 1));
@@ -42,57 +39,57 @@ export default function Register() {
   useEffect(() => {
     const fetchData = async () => {
       await fetchCountries(setCountries, setIsLoading);
-      await fetchCities(setCities, setIsLoading);
-      await fetchCities(setFilteredCities, setIsLoading);
     };
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const handleLogin = async () => {
-      const user: USER = {
-        USERNAME: username,
-        USER_PASSWORD: password,
-        INSERT_DATE: new Date(),
-      };
-      const response = await login(user);
+  // useEffect(() => {
+  //   const handleLogin = async () => {
+  //     const user: USER = {
+  //       USERNAME: username,
+  //       USER_PASSWORD: password,
+  //       INSERT_DATE: new Date(),
+  //     };
+  //     const response = await login(user);
 
-      if (response.status === 200) {
-        navigate("/");
-        window.location.reload();
-      } else {
-        alert(alert(response.message));
-      }
-    };
-    handleLogin();
-  }, [userRegistered]);
+  //     if (response.status === 200) {
+  //       navigate("/");
+  //       window.location.reload();
+  //     } else {
+  //       alert(alert(response.message));
+  //     }
+  //   };
+  //   handleLogin();
+  // }, [userRegistered]);
 
   const changeCountry = (e: ChangeEvent<HTMLSelectElement>) => {
-    const numberValue = parseInt(e.target.value);
-    setCountry(numberValue);
-    const newFilter = cities.filter((city) => city.COUNTRY_ID == numberValue);
-    setFilteredCities(newFilter);
+    setCountry(e.target.value);
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const birthDate = new Date(`${month}/${day}/${year}`);
-      const user: USER = {
-        USERNAME: username,
-        USER_EMAIL: email,
-        USER_PASSWORD: password,
-        BIRTH_DATE: birthDate,
-        GENDER: gender,
-        USER_CITY_ID: city,
-        INSERT_DATE: new Date(),
-      };
-      const result = await registerUser(user);
-      if (result.status == 200) {
-        setUserRegistered(true);
+    if (confirmPassword == password) {
+      try {
+        const birthDate = new Date(`${month}/${day}/${year}`);
+        const user: USER = {
+          username: username,
+          user_email: email,
+          user_password: password,
+          birth_date: birthDate,
+          user_country: country,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        };
+        const result = await registerUser(user);
+        if (result && result.status == 200) {
+          setUserRegistered(true);
+          navigate("/");
+        }
+      } catch (error: any) {
+        alert(error?.response?.data?.message);
       }
-    } catch (error) {
-      console.error(error);
+    } else {
+      alert("Your password is not confirmed, please check again");
     }
   };
 
@@ -144,6 +141,13 @@ export default function Register() {
           placeholder="password"
           required
           onChange={(e) => setPassword(e.target.value)}
+        />
+        <label className={style.inputLabel}>confirm password</label>
+        <input
+          type="password"
+          placeholder="confirm password"
+          required
+          onChange={(e) => setConfirmPassword(e.target.value)}
         />
         <label className={style.inputLabel}>date of birth</label>
         <div className={style.ageDiv}>
@@ -202,19 +206,6 @@ export default function Register() {
             ))}
           </select>
         </div>
-        <label className={style.inputLabel}>gender</label>
-        <select
-          className={style.genderSelect}
-          required
-          onChange={(e) => setGender(e.target.value)}
-        >
-          <option value={0} disabled>
-            gender
-          </option>
-          <option value={"M"}>male</option>
-          <option value={"F"}>female</option>
-          <option value={"O"}>other</option>
-        </select>
         <label className={style.inputLabel}>location</label>
         <div className={style.locationSelect}>
           <select
@@ -223,30 +214,12 @@ export default function Register() {
             required
             onChange={(e) => changeCountry(e)}
           >
-            <option value={0} disabled>
+            <option value={""} disabled>
               country
             </option>
             {countries.map((country) => (
-              <option key={country.COUNTRY_ID} value={country.COUNTRY_ID}>
-                {country.COUNTRY_NAME}
-              </option>
-            ))}
-          </select>
-          <select
-            className={style.citySelect}
-            value={city}
-            required
-            onChange={(e) => {
-              const numberValue = parseInt(e.target.value);
-              setCity(numberValue);
-            }}
-          >
-            <option selected disabled>
-              city
-            </option>
-            {filteredCities.map((city) => (
-              <option key={city.CITY_ID} value={city.CITY_ID}>
-                {city.CITY_NAME}
+              <option key={country.name.common} value={country.name.common}>
+                {country.name.common}
               </option>
             ))}
           </select>

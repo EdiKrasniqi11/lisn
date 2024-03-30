@@ -20,20 +20,6 @@ export default function UserNavBar() {
         </NavLink>
       </div>
       <div className={style.navigationDiv}>
-        <NavLink to="/admin-page/user-service/countries">
-          <h4 style={params.table === "countries" ? { opacity: 0.7 } : {}}>
-            Countries
-          </h4>
-        </NavLink>
-      </div>
-      <div className={style.navigationDiv}>
-        <NavLink to="/admin-page/user-service/cities">
-          <h4 style={params.table === "cities" ? { opacity: 0.7 } : {}}>
-            Cities
-          </h4>
-        </NavLink>
-      </div>
-      <div className={style.navigationDiv}>
         <NavLink to="/admin-page/user-service/users">
           <h4 style={params.table === "users" ? { opacity: 0.7 } : {}}>
             Users

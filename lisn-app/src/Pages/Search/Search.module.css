@@ -1,0 +1,118 @@
+.backgroundDiv {
+  min-height: 100vh;
+  width: 100vw;
+  background: radial-gradient(
+    circle at 90% 190%,
+    var(--main-color) 0%,
+    var(--secondary-color) 49%,
+    var(--main-color) 70%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+}
+.modalContainer {
+  width: 75%;
+  height: 85vh;
+  color: rgb(212, 212, 212);
+  font-family: "Josefin Sans", sans-serif;
+  background-color: rgba(34, 34, 34, 0.636);
+  box-shadow: 0px 0px 30px 5px rgba(0, 47, 71, 0.559);
+  margin-top: 2%;
+  border-radius: 5px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-inline: 3%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+}
+.searchBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 2.5%;
+}
+.searchBox input {
+  border: 1px solid rgba(255, 255, 255, 0.581);
+  height: 2.5em;
+  width: 100%;
+  padding-left: 1%;
+  border-radius: 5px;
+  background-color: transparent;
+  font-family: "Josefin Sans", sans-serif;
+  color: rgb(212, 212, 212);
+  caret-color: rgb(212, 212, 212);
+  transition: border 0.2s ease-in-out;
+}
+.searchBox input:hover {
+  border: 1px solid white;
+}
+.userResults {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  min-height: 40%;
+  padding-block: 2.5%;
+  border-block: 1px solid rgba(255, 255, 255, 0.581);
+}
+.searchResultContainer {
+  border: 1px solid rgba(151, 151, 151, 0.651);
+  background-color: rgba(151, 151, 151, 0.041);
+  padding: 2.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 2.5%;
+  transition: 0.2s box-shadow ease-in-out;
+}
+.searchResultContainer:hover {
+  box-shadow: inset 0px 0px 10px 10px rgba(22, 22, 22, 0.712);
+}
+.searchResultContainer h3 {
+  margin-top: 10%;
+  margin-bottom: 0;
+  transition: 0.2s color ease-in-out;
+}
+.searchResultContainer:hover h3 {
+  color: rgba(255, 255, 255, 0.581);
+}
+.profilePicture {
+  border: 2px solid transparent;
+  position: relative;
+  height: 128px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 128px;
+  aspect-ratio: 1;
+  border-radius: 500%;
+  border: 2px solid rgb(94, 94, 94);
+  overflow: hidden;
+}
+#profileImage {
+  height: 100%;
+  width: 100%;
+}
+.noImageFound {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

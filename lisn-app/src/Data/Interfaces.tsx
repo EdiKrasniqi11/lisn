@@ -1,41 +1,46 @@
 export interface USER_ROLE {
-  ROLE_ID: number;
-  ROLE_NAME: string;
-  INSERT_DATE: Date;
+  _id: string;
+  role_name: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface USER_STATE {
-  STATE_ID: number;
-  STATE_NAME: string;
-  INSERT_DATE: Date;
+  _id: string;
+  state_name: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface COUNTRY {
-  COUNTRY_ID: number;
-  COUNTRY_NAME: string;
-  COUNTRY_ICON: string;
-  INSERT_DATE: Date;
-}
-
-export interface CITY {
-  CITY_ID: number;
-  CITY_NAME: string;
-  COUNTRY_ID: number;
-  INSERT_DATE: Date;
+  flags: any;
+  name: any;
+  createdAt: Date;
 }
 
 export interface USER {
-  USER_ID?: string;
-  USERNAME?: string;
-  USER_EMAIL?: string;
-  USER_IMG?: string;
-  USER_PASSWORD?: string;
-  BIRTH_DATE?: Date;
-  GENDER?: string;
-  USER_CITY_ID?: number;
-  USER_ROLE_ID?: number;
-  USER_STATE_ID?: number;
-  INSERT_DATE: Date;
+  _id?: string;
+  username?: string;
+  user_email?: string;
+  user_image?: string;
+  user_password?: string;
+  birth_date?: Date;
+  user_country?: string;
+  user_role?: USER_ROLE;
+  user_state?: USER_STATE;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface LoggedUser {
+  username: string;
+  role: string;
+}
+
+export interface Playlist {
+  PLAYLIST_ID: string;
+  IMAGE: string;
+  TITLE: string;
 }
 
 export interface DataInputConfig {

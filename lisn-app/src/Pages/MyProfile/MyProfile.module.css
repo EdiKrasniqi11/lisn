@@ -1,0 +1,124 @@
+.my_profile {
+  padding-left: 5%;
+  min-height: 100vh;
+  width: 95%;
+  background: var(--secondary-color);
+  background: radial-gradient(
+    circle at 90% 190%,
+    var(--main-color) 0%,
+    var(--secondary-color) 49%,
+    var(--main-color) 70%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profileCard {
+  position: relative;
+  width: 64%;
+  min-height: 87vh;
+  color: rgb(212, 212, 212);
+  font-family: "Josefin Sans", sans-serif;
+  background-color: rgba(34, 34, 34, 0.636);
+  box-shadow: 0px 0px 30px 10px rgba(1, 19, 77, 0.662);
+  margin-top: 2%;
+  border-radius: 5px;
+  padding-block: 20px;
+  padding-inline: 3%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.entryInfo {
+  display: flex;
+  align-items: center;
+  padding-bottom: 2.5%;
+}
+.mainInfo {
+  margin-left: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+}
+h1,
+h4,
+p {
+  margin: 0;
+}
+.mainInfo p {
+  color: rgba(212, 212, 212, 0.666);
+}
+.mainInfo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.2s color ease-in-out;
+}
+.mainInfo a:hover {
+  color: rgb(212, 212, 212);
+}
+.editableData {
+  padding-block: 2.5%;
+  height: 100%;
+  width: 100%;
+  border-top: 1px solid rgba(231, 231, 231, 0.704);
+  display: flex;
+  flex-wrap: wrap;
+}
+.editableField,
+.nonEditableField {
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2%;
+  margin-right: 5%;
+}
+.editableField {
+  cursor: pointer;
+}
+.editableContent {
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+  margin-bottom: 2%;
+}
+.iconDiv {
+  visibility: hidden;
+}
+.editableField:hover .iconDiv {
+  visibility: visible;
+}
+.editableField h4 {
+  margin-top: 5px;
+}
+.actionDiv {
+  width: 91%;
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+}
+.actionDiv a {
+  text-decoration: none;
+  max-width: fit-content;
+  font-size: 85%;
+  padding-block: 1%;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+  transition: 0.2s opacity ease-in-out;
+}
+#deactivateButton {
+  color: rgb(197, 0, 0);
+}
+.actionDiv a:hover {
+  opacity: 0.8;
+}

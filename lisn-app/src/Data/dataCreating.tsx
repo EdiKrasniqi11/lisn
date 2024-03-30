@@ -1,7 +1,6 @@
 import axios from "axios";
 import { API_URL } from "./env_variables";
-import { CITY, COUNTRY, USER, USER_ROLE, USER_STATE } from "./Interfaces";
-import secureLocalStorage from "react-secure-storage";
+import { COUNTRY, USER, USER_ROLE, USER_STATE } from "./Interfaces";
 
 export async function createUserRole(entity: USER_ROLE) {
   try {
@@ -10,8 +9,8 @@ export async function createUserRole(entity: USER_ROLE) {
     const response = await axios.post(apiUrl, entity);
 
     return response.data;
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    alert(error?.response?.data?.message);
   }
 }
 
@@ -22,42 +21,8 @@ export async function createUserState(entity: USER_STATE) {
     const response = await axios.post(apiUrl, entity);
 
     return response.data;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-export async function createCountry(entity: COUNTRY) {
-  try {
-    const apiUrl = `${API_URL}/countries`;
-    const headers = {
-      Authorization: `Bearer ${secureLocalStorage.getItem("access-token")}`,
-    };
-    const response = await axios.post(apiUrl, {
-      headers: headers,
-      body: entity,
-    });
-
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-export async function createCity(entity: CITY) {
-  try {
-    const apiUrl = `${API_URL}/cities`;
-    const headers = {
-      Authorization: `Bearer ${secureLocalStorage.getItem("access-token")}`,
-    };
-    const response = await axios.post(apiUrl, {
-      headers: headers,
-      body: entity,
-    });
-
-    return response.data;
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    alert(error?.response?.data?.message);
   }
 }
 
@@ -66,8 +31,11 @@ export async function registerUser(entity: USER) {
     const apiUrl = `${API_URL}/users`;
     const response = await axios.post(apiUrl, entity);
 
-    return response.data;
-  } catch (error) {
-    console.error(error);
+    return {
+      data: response.data,
+      status: response.status,
+    };
+  } catch (error: any) {
+    alert(error?.response?.data?.message);
   }
 }
