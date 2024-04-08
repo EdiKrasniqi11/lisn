@@ -12,6 +12,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .toggleSwitch {
   position: fixed;
   right: 2%;

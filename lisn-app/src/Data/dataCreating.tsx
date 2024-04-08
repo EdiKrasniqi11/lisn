@@ -39,3 +39,16 @@ export async function registerUser(entity: USER) {
     alert(error?.response?.data?.message);
   }
 }
+
+export async function followUser(id: string) {
+  try {
+    const apiUrl = `${API_URL}/follow/${id}`;
+    const headers = {
+      Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+    };
+    const response = await axios.post(apiUrl, null, { headers });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}

@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
 import style from "./NoContent.module.css";
+import Background from "../../Components/Home-Components/Background/Background";
 
 export default function NoContent() {
   return (
-    <div className={style.backgroundDiv}>
+    <Background>
       <div className={style.noContentDiv}>
         <h2>404</h2>
         <h3>
@@ -12,6 +13,6 @@ export default function NoContent() {
         </h3>
         <NavLink to="/">Go back Home</NavLink>
       </div>
-    </div>
+    </Background>
   );
 }

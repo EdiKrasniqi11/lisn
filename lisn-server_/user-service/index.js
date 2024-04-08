@@ -8,6 +8,7 @@ const userStateRoutes = require("./routes/user_state.route.js");
 const userRoutes = require("./routes/user.route.js");
 const authRoutes = require("./routes/auth.route.js");
 const queryRoutes = require("./routes/query.route.js");
+const followRoutes = require("./routes/follow.route.js");
 const axios = require("axios");
 const { createAdminUser } = require("./controllers/user.controller.js");
 const { upload } = require("./utils/imageMiddleware.js");
@@ -33,6 +34,7 @@ app.use("/api/user-states", userStateRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/authentication", authRoutes);
 app.use("/api/search", queryRoutes);
+app.use("/api/follow", followRoutes);
 
 //FILE UPLOAD
 app.post("/api/upload", upload.single("user_image"), (req, res) => {

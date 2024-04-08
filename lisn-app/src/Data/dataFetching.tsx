@@ -103,3 +103,76 @@ export const searchUsers = async (username: string) => {
     console.error("Error fetching search results:" + error);
   }
 };
+
+export const fetchUser = async (id: string) => {
+  try {
+    const apiUrl = `${API_URL}/users/${id}`;
+    const response: AxiosResponse<USER> = await axios.get(apiUrl);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user" + error);
+  }
+};
+
+export const fetchFollowers = async (
+  id: string,
+  limit: number,
+  page: number
+) => {
+  try {
+    const apiUrl = `${API_URL}/follow/followers/${id}?limit=${limit}&page=${page}`;
+    const response: AxiosResponse = await axios.get(apiUrl);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching followers" + error);
+  }
+};
+
+export const fetchFollowings = async (
+  id: string,
+  limit: number,
+  page: number
+) => {
+  try {
+    const apiUrl = `${API_URL}/follow/followings/${id}?limit=${limit}&page=${page}`;
+    const response: AxiosResponse = await axios.get(apiUrl);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching followers" + error);
+  }
+};
+
+export const fetchFollowerCount = async (id: string) => {
+  try {
+    const apiUrl = `${API_URL}/follow/followers/count/${id}`;
+    const response: AxiosResponse = await axios.get(apiUrl);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching follower count" + error);
+  }
+};
+
+export const fetchFollowingCount = async (id: string) => {
+  try {
+    const apiUrl = `${API_URL}/follow/followings/count/${id}`;
+    const response: AxiosResponse = await axios.get(apiUrl);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching follower count" + error);
+  }
+};
+
+export const userFollows = async (id: string) => {
+  try {
+    const apiUrl = `${API_URL}/follow/follower/${id}`;
+    const headers = {
+      Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+    };
+    const response: AxiosResponse = await axios.get(apiUrl, {
+      headers: headers,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error checking follower: " + error);
+  }
+};

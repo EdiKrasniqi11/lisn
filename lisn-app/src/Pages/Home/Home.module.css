@@ -1,18 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
-.home {
-  min-height: 100vh;
-  width: 100vw;
-  background: var(--secondary-color);
-  background: radial-gradient(
-    circle at 90% 190%,
-    var(--main-color) 0%,
-    var(--secondary-color) 49%,
-    var(--main-color) 70%
-  );
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .announcementDiv {
   background-image: url("../../Assets/Images/AnnouncementDivBackgroundImage.png");
   border-radius: 5px;

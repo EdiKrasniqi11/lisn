@@ -11,7 +11,7 @@ export async function deleteUserRole(ROLE_ID: string) {
 
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -25,7 +25,7 @@ export async function deleteUserState(STATE_ID: string) {
 
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -38,6 +38,19 @@ export async function deleteUser(USER_ID: string) {
     const response = await axios.delete(apiUrl, { headers });
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
+  }
+}
+
+export async function unfollowUser(id: string) {
+  try {
+    const apiUrl = `${API_URL}/follow/${id}`;
+    const headers = {
+      Authorization: `Bearer ${localStorage.getItem("access-token")}`,
+    };
+    const response = await axios.delete(apiUrl, { headers });
+    return response.data;
+  } catch (error) {
+    console.error(error);
   }
 }

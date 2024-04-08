@@ -5,13 +5,15 @@ import style from "./Search.module.css";
 import { searchUsers } from "../../Data/dataFetching";
 import { USER } from "../../Data/Interfaces";
 import { useDebounce } from "../../Data/hooks";
-import UserImageContainer from "../MyProfile/UserImageContainer/UserImageContainer";
 import { IMAGE_URL } from "../../Data/env_variables";
+import { useNavigate } from "react-router-dom";
+import Background from "../../Components/Home-Components/Background/Background";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchedUsers, setSearchedUsers] = useState<USER[]>([]);
   const debouncedSearch = useDebounce(searchTerm);
+  const navigate = useNavigate();
 
   const fetchSearchResults = async () => {
     if (debouncedSearch !== "") {
@@ -29,7 +31,7 @@ export default function Search() {
   }, [debouncedSearch]);
 
   return (
-    <div className={style.backgroundDiv}>
+    <Background>
       <div className={style.modalContainer}>
         <div className={style.searchBox}>
           <input
@@ -40,7 +42,10 @@ export default function Search() {
         </div>
         <div className={style.userResults}>
           {searchedUsers?.map((user) => (
-            <div className={style.searchResultContainer}>
+            <div
+              className={style.searchResultContainer}
+              onClick={() => navigate(`/user-profile/${user._id}`)}
+            >
               <div className={style.profilePicture}>
                 <div className={style.imageContainer}>
                   {user?.user_image ? (
@@ -67,6 +72,6 @@ export default function Search() {
           ))}
         </div>
       </div>
-    </div>
+    </Background>
   );
 }

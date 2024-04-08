@@ -37,6 +37,21 @@ export interface LoggedUser {
   role: string;
 }
 
+export interface Follow {
+  _id: string;
+  follower?: USER;
+  followed?: USER;
+}
+
+export interface FollowPage {
+  current_page: number;
+  followerCount?: number;
+  followingCount?: number;
+  followers?: Follow[];
+  following?: Follow[];
+  totalPages: number;
+}
+
 export interface Playlist {
   PLAYLIST_ID: string;
   IMAGE: string;

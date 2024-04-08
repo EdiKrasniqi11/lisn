@@ -4,18 +4,18 @@
   margin-bottom: 20px;
   width: 49%;
   border-radius: 5px;
-  background-color: rgb(60, 60, 60);
+  background-color: rgba(151, 151, 151, 0.103);
   display: flex;
   align-items: center;
   color: rgb(188, 194, 213);
-  transition: background-color 0.3s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 .playlist:hover {
-  background-color: rgb(65, 65, 65);
+  box-shadow: inset 0px 0px 75px 2px rgba(151, 151, 151, 0.311);
   cursor: pointer;
 }
 .playlistImage {

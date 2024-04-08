@@ -6,9 +6,6 @@ import Sidebar from "./Components/Home-Components/Sidebar/Sidebar";
 import ThemeToggle from "./Components/Home-Components/Toggle/ThemeToggle";
 import Messages from "./Pages/Messages/Messages";
 import AdminPage from "./Pages/AdminPage/AdminPage";
-
-// import getUserRoles from "./paths";
-
 import {
   BrowserRouter as Router,
   Route,
@@ -17,7 +14,8 @@ import {
 } from "react-router-dom";
 import AdminRoute from "./Components/Admin-Components/AdminRoute/AdminRoute";
 import NoContent from "./Pages/NoContent/NoContent";
-import MyProfile from "./Pages/MyProfile/MyProfile";
+import MyProfile from "./Pages/Profiles/MyProfile/MyProfile";
+import UserProfile from "./Pages/Profiles/UserProfile/UserProfile";
 import Search from "./Pages/Search/Search";
 
 function App() {
@@ -34,6 +32,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/my-profile/:function?" element={<MyProfile />} />
+          <Route
+            path="/user-profile/:id/:function?"
+            element={<UserProfile />}
+          />
           <Route path="/search" element={<Search />} />
           <Route
             path="/admin-page/:service?/:table?/:function?/:id?"

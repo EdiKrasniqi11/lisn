@@ -10,9 +10,10 @@ import { updateUserImage } from "../../../Data/dataUpdating";
 
 interface ImageContainerProps {
   user: USER | undefined;
+  page: string | undefined;
 }
 
-export default function ImageContainer({ user }: ImageContainerProps) {
+export default function ImageContainer({ user, page }: ImageContainerProps) {
   const imagePath = user?.user_image ? user.user_image : "";
   const imageUrl = IMAGE_URL(imagePath);
 
@@ -27,23 +28,33 @@ export default function ImageContainer({ user }: ImageContainerProps) {
     <div className={style.profilePicture}>
       <div className={style.imageContainer}>
         {user?.user_image ? (
-          <img src={imageUrl} alt="Image" id={style.profileImage} />
+          <img src={imageUrl} alt={user._id} id={style.profileImage} />
         ) : (
-          <div className={style.updatePictureNoHover}>
-            <h4>Update Picture</h4>
+          <div
+            className={
+              page === "my-profile"
+                ? style.noImageFound
+                : style.noImageFoundUser
+            }
+          >
+            <h4>No Picture</h4>
             <Camera />
           </div>
         )}
       </div>
-      <div className={style.updatePicture}>
-        <h4>Update Picture</h4>
-        <Camera />
-      </div>
-      <input
-        type="file"
-        onChange={(e) => setUserImage(e)}
-        className={style.inputImage}
-      />
+      {page === "my-profile" ? (
+        <>
+          <div className={style.updatePicture}>
+            <h4>Update Picture</h4>
+            <Camera />
+          </div>
+          <input
+            type="file"
+            onChange={(e) => setUserImage(e)}
+            className={style.inputImage}
+          />
+        </>
+      ) : null}
     </div>
   );
 }

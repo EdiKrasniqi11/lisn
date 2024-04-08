@@ -1,0 +1,80 @@
+.followerContainer {
+  position: relative;
+  height: 50px;
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: rgba(151, 151, 151, 0.103);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(188, 194, 213);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+}
+.followerContainer:hover {
+  box-shadow: inset 0px 0px 75px 2px rgba(151, 151, 151, 0.311);
+}
+.briefInfo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  max-width: fit-content;
+}
+.briefInfo img {
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 5px 0 0px 5px;
+}
+.briefInfo h4 {
+  padding-inline: 10%;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.followButton {
+  height: auto;
+  margin-right: 2%;
+  padding-block: 1%;
+  padding-inline: 2.5%;
+  border: 2px solid white;
+  color: inherit;
+  font-family: inherit;
+  border-radius: 25px;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: 0.2s box-shadow ease-in-out;
+  transition: 0.2s color ease-in-out;
+}
+.followButton:hover {
+  box-shadow: 0px 0px 5px 1px rgb(176, 176, 255);
+  color: rgb(176, 176, 255);
+}
+.unfollowButton {
+  height: auto;
+  margin-right: 2%;
+  padding-block: 1%;
+  padding-inline: 2.5%;
+  border: 2px solid white;
+  color: inherit;
+  font-family: inherit;
+  border-radius: 25px;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: 0.2s box-shadow ease-in-out;
+  transition: 0.2s color ease-in-out;
+}
+.unfollowButton:hover {
+  box-shadow: 0px 0px 5px 1px rgb(255, 176, 176);
+  color: rgb(255, 176, 176);
+}

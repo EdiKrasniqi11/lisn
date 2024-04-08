@@ -1,7 +1,7 @@
 .sidebar {
   position: fixed;
   left: 0;
-  width: 5%;
+  width: 75px;
   height: 100%;
   padding-block: 2.5%;
   background-color: rgba(34, 34, 34, 0.636);

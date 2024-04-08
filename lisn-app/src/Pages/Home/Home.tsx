@@ -5,6 +5,7 @@ import { fetchMyUser } from "../../Data/authentication";
 import { LoggedUser, USER } from "../../Data/Interfaces";
 import PlaylistContainer from "../../Components/Home-Components/Playlist/PlaylistContainer";
 import { Playlist } from "../../Data/Interfaces";
+import Background from "../../Components/Home-Components/Background/Background";
 
 export default function Home() {
   const [user, setUser] = useState<LoggedUser>();
@@ -43,7 +44,7 @@ export default function Home() {
     fetchData();
   }, []);
   return (
-    <div className={style.home}>
+    <Background>
       <div className={style.announcementDiv}>
         {user
           ? `Hi there ${user.username}. Ready for some music?`
@@ -57,6 +58,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-    </div>
+    </Background>
   );
 }

@@ -5,6 +5,7 @@ import googleLogo from "../../Assets/Images/google-logo.png";
 import { FormEvent, useState } from "react";
 import { USER } from "../../Data/Interfaces";
 import { login } from "../../Data/authentication";
+import Background from "../../Components/Home-Components/Background/Background";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ export default function Login() {
   };
 
   return (
-    <div className={style.login}>
+    <Background id={style.login}>
       <form
         method="POST"
         onSubmit={(e) => handleSubmit(e)}
@@ -80,6 +81,6 @@ export default function Login() {
           Sign up here
         </NavLink>
       </div>
-    </div>
+    </Background>
   );
 }

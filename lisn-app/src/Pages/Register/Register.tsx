@@ -43,24 +43,27 @@ export default function Register() {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   const handleLogin = async () => {
-  //     const user: USER = {
-  //       USERNAME: username,
-  //       USER_PASSWORD: password,
-  //       INSERT_DATE: new Date(),
-  //     };
-  //     const response = await login(user);
+  useEffect(() => {
+    const handleLogin = async () => {
+      if (userRegistered) {
+        const user: USER = {
+          username: username,
+          user_password: password,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        };
+        const response = await login(user);
 
-  //     if (response.status === 200) {
-  //       navigate("/");
-  //       window.location.reload();
-  //     } else {
-  //       alert(alert(response.message));
-  //     }
-  //   };
-  //   handleLogin();
-  // }, [userRegistered]);
+        if (response.status === 200) {
+          navigate("/");
+          window.location.reload();
+        } else {
+          alert(alert(response.message));
+        }
+      }
+    };
+    handleLogin();
+  }, [userRegistered]);
 
   const changeCountry = (e: ChangeEvent<HTMLSelectElement>) => {
     setCountry(e.target.value);
@@ -83,7 +86,6 @@ export default function Register() {
         const result = await registerUser(user);
         if (result && result.status == 200) {
           setUserRegistered(true);
-          navigate("/");
         }
       } catch (error: any) {
         alert(error?.response?.data?.message);

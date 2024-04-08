@@ -43,10 +43,10 @@
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 999;
+  z-index: 500;
 }
 .updatePicture h4,
-.updatePictureNoHover h4 {
+.noImageFound h4 {
   padding: 0;
   margin: 0;
 }
@@ -65,7 +65,8 @@
   top: 0;
   visibility: hidden;
 }
-.updatePictureNoHover {
+.noImageFound,
+.noImageFoundUser {
   border-radius: 50%;
   border: 2px solid rgb(94, 94, 94);
   height: 128px;
@@ -80,4 +81,7 @@
 }
 .profilePicture:hover .updatePicture {
   visibility: visible;
+}
+.profilePicture:hover .noImageFound {
+  visibility: hidden;
 }
