@@ -123,9 +123,11 @@ export default function MyProfile() {
             <NavLink to="./change-password" id={style.passwordButton}>
               CHANGE PASSWORD
             </NavLink>
-            <NavLink to="./artist-application" id={style.artistButton}>
-              BECOME AN ARTIST
-            </NavLink>
+            {user?.user_role?.role_name !== "Artist" ? (
+              <NavLink to="./artist-application" id={style.artistButton}>
+                BECOME AN ARTIST
+              </NavLink>
+            ) : null}
             <NavLink to="./account-deactivation" id={style.deactivateButton}>
               DEACTIVATE ACCOUNT
             </NavLink>

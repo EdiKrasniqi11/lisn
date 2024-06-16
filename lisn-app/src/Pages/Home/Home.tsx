@@ -11,24 +11,56 @@ export default function Home() {
   const [user, setUser] = useState<LoggedUser>();
   const [dummyPlaylists, setDummyPlaylists] = useState<Playlist[]>([
     {
-      PLAYLIST_ID: "wbc",
+      _id: "wbc",
       IMAGE: Views,
       TITLE: "Views",
+      SONGS: [
+        {
+          _id: "abcdef",
+          song_path: "",
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+      ],
     },
     {
-      PLAYLIST_ID: "wbc",
+      _id: "wbc",
       IMAGE: Views,
       TITLE: "Views",
+      SONGS: [
+        {
+          _id: "abcdef",
+          song_path: "",
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+      ],
     },
     {
-      PLAYLIST_ID: "wbc",
+      _id: "wbc",
       IMAGE: Views,
       TITLE: "Views",
+      SONGS: [
+        {
+          _id: "abcdef",
+          song_path: "",
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+      ],
     },
     {
-      PLAYLIST_ID: "wbc",
+      _id: "wbc",
       IMAGE: Views,
       TITLE: "Views",
+      SONGS: [
+        {
+          _id: "abcdef",
+          song_path: "",
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+      ],
     },
   ]);
 
@@ -43,6 +75,7 @@ export default function Home() {
     };
     fetchData();
   }, []);
+
   return (
     <Background>
       <div className={style.announcementDiv}>

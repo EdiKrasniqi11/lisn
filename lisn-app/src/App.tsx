@@ -6,17 +6,12 @@ import Sidebar from "./Components/Home-Components/Sidebar/Sidebar";
 import ThemeToggle from "./Components/Home-Components/Toggle/ThemeToggle";
 import Messages from "./Pages/Messages/Messages";
 import AdminPage from "./Pages/AdminPage/AdminPage";
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-  Routes,
-} from "react-router-dom";
-import AdminRoute from "./Components/Admin-Components/AdminRoute/AdminRoute";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NoContent from "./Pages/NoContent/NoContent";
 import MyProfile from "./Pages/Profiles/MyProfile/MyProfile";
 import UserProfile from "./Pages/Profiles/UserProfile/UserProfile";
 import Search from "./Pages/Search/Search";
+import ArtistPage from "./Pages/ArtistPage/ArtistPage";
 
 function App() {
   useEffect(() => {
@@ -38,14 +33,14 @@ function App() {
           />
           <Route path="/search" element={<Search />} />
           <Route
-            path="/admin-page/:service?/:table?/:function?/:id?"
+            path="/admin/:service?/:table?/:function?/:id?"
             element={<AdminPage />}
           />
           <Route path="/messages/:id?" element={<Messages />} />
+          <Route path="/artist/:id?/:function?" element={<ArtistPage />} />
           <Route path="*" element={<NoContent />} />
         </Routes>
         <ThemeToggle />
-        <AdminRoute />
       </Router>
     </>
   );

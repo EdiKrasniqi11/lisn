@@ -7,6 +7,7 @@ import { fetchCountries } from "../../Data/dataFetching";
 import { registerUser } from "../../Data/dataCreating";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../Data/authentication";
+import Background from "../../Components/Home-Components/Background/Background";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -96,7 +97,7 @@ export default function Register() {
   };
 
   return (
-    <div className={style.register}>
+    <Background>
       <form
         method="POST"
         className={style.registerForm}
@@ -251,6 +252,6 @@ export default function Register() {
           </button>
         </LoginSocialGoogle>
       </form>
-    </div>
+    </Background>
   );
 }

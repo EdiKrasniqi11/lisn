@@ -1,19 +1,27 @@
 import style from "./Sidebar.module.css";
 import Views from "../../../Assets/Images/Views.jpg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { LoggedUser } from "../../../Data/Interfaces";
-import { fetchMyUser } from "../../../Data/authentication";
-import {
-  HomeIcon,
-  LoginIcon,
-  MessagesIcon,
-  MyAccountIcon,
-  SearchIcon,
-} from "../../Icons/MyIcons";
+import { fetchMyUser, logout } from "../../../Data/authentication";
 
 export default function Sidebar() {
   const [user, setUser] = useState<LoggedUser>();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    const response = await logout();
+
+    if (response) {
+      navigate("/");
+      alert("Successful logout");
+      window.location.reload();
+    } else {
+      alert(
+        "Something wen't wrong with the logout process please check for any issues with logging in or your refresh token :)"
+      );
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,56 +37,45 @@ export default function Sidebar() {
     fetchData();
   }, []);
   return (
-    <div className={style.sidebar}>
-      <div className={style.staticNav}>
-        <div title="Home" className={style.navIcons}>
-          <NavLink to="/">
-            <HomeIcon />
+    <div className={style.background}>
+      <div className={style.sidebar}>
+        <div className={style.leftSide}>
+          <NavLink to="/" className={style.navTab}>
+            <div title="Home">Home</div>
           </NavLink>
-        </div>
-        {user ? (
-          <div title="User Manager" className={style.navIcons}>
-            <NavLink to="/my-profile">
-              <MyAccountIcon />
+          {user ? (
+            <NavLink to="/my-profile" className={style.navTab}>
+              <div title="User Manager">My Account</div>
             </NavLink>
-          </div>
-        ) : (
-          <div title="Login" className={style.navIcons}>
-            <NavLink to="/login">
-              <LoginIcon />
+          ) : null}
+          <NavLink to="/search" className={style.navTab}>
+            <div title="Search">Search</div>
+          </NavLink>
+          <NavLink to="/messages" className={style.navTab}>
+            <div title="Messages">Inbox</div>
+          </NavLink>
+        </div>
+        <div className={style.rightSide}>
+          {user?.role === "Artist" ? (
+            <NavLink to="/artist" className={style.navTab}>
+              <div title="Admin">Artist</div>
             </NavLink>
-          </div>
-        )}
-        <div title="Search" className={style.navIcons}>
-          <NavLink to="/search">
-            <SearchIcon />
-          </NavLink>
-        </div>
-        <div title="Messages" className={style.navIcons}>
-          <NavLink to="/messages">
-            <MessagesIcon />
-          </NavLink>
-        </div>
-        <div className={style.navIcons}>
-          <img
-            src={Views}
-            id={style.playlistButton}
-            className={style.playlistImage}
-          />
-        </div>
-        <div className={style.navIcons}>
-          <img
-            src={Views}
-            id={style.playlistButton}
-            className={style.playlistImage}
-          />
-        </div>
-        <div className={style.navIcons}>
-          <img
-            src={Views}
-            id={style.playlistButton}
-            className={style.playlistImage}
-          />
+          ) : null}
+          {user?.role === "Admin" ? (
+            <NavLink to="/admin" className={style.navTab}>
+              <div title="Admin">Admin</div>
+            </NavLink>
+          ) : null}
+          {user ? (
+            <NavLink to="/" className={style.navTab} onClick={handleLogout}>
+              <div title="Logout">Logout</div>
+            </NavLink>
+          ) : null}
+          {!user ? (
+            <NavLink to="/login" className={style.navTab}>
+              <div title="Login">Login</div>
+            </NavLink>
+          ) : null}
         </div>
       </div>
     </div>

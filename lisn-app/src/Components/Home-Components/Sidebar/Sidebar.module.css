@@ -1,22 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+.background {
+  background: var(--main-color);
+}
 .sidebar {
-  position: fixed;
-  left: 0;
-  width: 75px;
-  height: 100%;
-  padding-block: 2.5%;
-  background-color: rgba(34, 34, 34, 0.636);
-  z-index: 999;
-}
-.staticNav {
-  height: 30%;
   width: 100%;
+  height: 45px;
+  background-color: rgba(25, 25, 25, 0.671);
+  box-shadow: inset 0px 0px 7px 0px rgba(48, 48, 48, 0.332);
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+}
+.leftSide,
+.rightSide {
+  height: 100%;
+  min-width: 49%;
+  padding-inline: 0.5%;
   text-align: center;
+  display: flex;
+  align-items: center;
+  color: rgb(212, 212, 212);
+  font-family: "Josefin Sans", sans-serif;
 }
-.navIcons {
-  margin-bottom: 75%;
+.rightSide {
+  justify-content: right;
 }
+.navTab {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  height: 70%;
+  width: max-content;
+  padding-inline: 1%;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 5px;
+  margin-right: 0.5%;
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.navTab::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(60, 60, 60);
+  border-radius: 5px;
+  transform: scale(0);
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.navTab:hover::before {
+  transform: scale(1);
+}
+
 #sidebarButton {
-  width: 40%;
   aspect-ratio: 1;
   transition: fill 0.3s ease-in-out;
 }
@@ -32,7 +75,6 @@
   box-shadow: 0px 0px 0px 6px rgba(65, 65, 65, 0.264);
 }
 .staticNav img {
-  width: 70%;
   border-radius: 5px;
   aspect-ratio: 1;
 }

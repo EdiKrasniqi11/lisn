@@ -6,21 +6,21 @@ export default function UserNavBar() {
   return (
     <div className={style.navigation}>
       <div className={style.navigationDiv}>
-        <NavLink to="/admin-page/user-service/user-roles">
+        <NavLink to="/admin/user-service/user-roles">
           <h4 style={params.table === "user-roles" ? { opacity: 0.7 } : {}}>
             User Roles
           </h4>
         </NavLink>
       </div>
       <div className={style.navigationDiv}>
-        <NavLink to="/admin-page/user-service/user-states">
+        <NavLink to="/admin/user-service/user-states">
           <h4 style={params.table === "user-states" ? { opacity: 0.7 } : {}}>
             User States
           </h4>
         </NavLink>
       </div>
       <div className={style.navigationDiv}>
-        <NavLink to="/admin-page/user-service/users">
+        <NavLink to="/admin/user-service/users">
           <h4 style={params.table === "users" ? { opacity: 0.7 } : {}}>
             Users
           </h4>

@@ -1,7 +1,6 @@
 .backgroundDiv {
-  padding-left: 5%;
-  min-height: 100vh;
-  width: 95%;
+  min-height: calc(100vh - 45px);
+  width: 100%;
   background: var(--secondary-color);
   background: radial-gradient(
     circle at 90% 190%,

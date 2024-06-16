@@ -10,6 +10,7 @@ import { LoggedUser } from "../../Data/Interfaces";
 import { fetchMyUser } from "../../Data/authentication";
 import Users from "../../Pages-Admin/Users/Users";
 import LoadingPage from "../../Components/Home-Components/Loading/LoadingPage";
+import Background from "../../Components/Home-Components/Background/Background";
 
 export default function AdminPage() {
   const params = useParams();
@@ -28,16 +29,16 @@ export default function AdminPage() {
     fetchData();
   }, []);
   return (
-    <div className={style.adminDiv}>
+    <Background>
       {loading ? <LoadingPage /> : null}
       {user?.role === "Admin" ? (
         <div className={style.contentDiv}>
           <div className={style.titleSwitch}>
-            <NavLink to="/admin-page">
+            <NavLink to="/admin">
               <h2>Administrator</h2>
             </NavLink>
             <h2>/</h2>
-            <NavLink to="/admin-page/user-service">
+            <NavLink to="/admin/user-service">
               <h2
                 style={
                   params.service === "user-service" ? { opacity: 0.7 } : {}
@@ -68,6 +69,6 @@ export default function AdminPage() {
           <NavLink to="/login">Login</NavLink>
         </div>
       )}
-    </div>
+    </Background>
   );
 }

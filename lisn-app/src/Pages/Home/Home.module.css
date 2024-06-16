@@ -19,14 +19,14 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  box-shadow: 0px 0px 30px 10px rgba(1, 19, 77, 0.662);
+  box-shadow: 0px 0px 20px 5px rgba(1, 19, 77, 0.373);
 }
 .playlistsContainer {
   width: 64%;
   color: rgb(212, 212, 212);
   font-family: "Josefin Sans", sans-serif;
   background-color: rgba(34, 34, 34, 0.636);
-  box-shadow: 0px 0px 30px 10px rgba(1, 19, 77, 0.662);
+  box-shadow: 0px 0px 20px 5px rgba(1, 19, 77, 0.373);
   margin-top: 2%;
   border-radius: 5px;
   padding-block: 20px;

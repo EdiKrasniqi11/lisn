@@ -41,6 +41,7 @@ export default function UserProfile() {
           navigate("/my-profile");
         }
         setUser(myUser);
+        setIsLoggedIn(true);
       } catch (e: any) {
         if (e.response.status === 403) {
           setIsLoggedIn(false);
@@ -113,6 +114,11 @@ export default function UserProfile() {
 
   const unfollowUserProfile = async () => {
     try {
+      if (!isLoggedIn) {
+        alert("You must be logged in to follow users");
+        navigate("/login");
+        return;
+      }
       const response = params.id ? await unfollowUser(params.id) : null;
       window.location.reload();
     } catch (e) {
@@ -137,6 +143,10 @@ export default function UserProfile() {
                     {` ${followerCount} ${
                       followerCount === 1 ? "Follower" : "Followers"
                     }`}
+                  </NavLink>
+                  <NavLink to="./following">
+                    <Followers />
+                    {` ${followingCount} Following`}
                   </NavLink>
                 </p>
               </div>
@@ -197,7 +207,7 @@ export default function UserProfile() {
           </div>
         </div>
       </div>
-      {params.function === "followers" ? (
+      {params.function === "followers" || params.function === "following" ? (
         <FollowersModal user={searchedUser} updateCount={updateCount} />
       ) : null}
     </Background>

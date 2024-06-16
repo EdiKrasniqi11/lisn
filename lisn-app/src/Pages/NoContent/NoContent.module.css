@@ -16,11 +16,11 @@
 .noContentDiv {
   position: relative;
   width: 64%;
-  height: 87vh;
+  height: 77vh;
   color: rgb(212, 212, 212);
   font-family: "Josefin Sans", sans-serif;
   background-color: rgba(34, 34, 34, 0.407);
-  box-shadow: 0px 0px 30px 10px rgba(1, 19, 77, 0.662);
+  box-shadow: 0px 0px 20px 5px rgba(1, 19, 77, 0.373);
   margin-top: 2%;
   border-radius: 5px;
   padding-block: 20px;
@@ -40,7 +40,6 @@
 .noContentDiv a {
   text-decoration: none;
   color: inherit;
-  background-color: rgb(0, 112, 177);
   border-radius: 5px;
   border: 2px solid rgb(212, 212, 212);
   padding: 1% 2%;

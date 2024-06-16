@@ -7,7 +7,7 @@ interface PlaylistProps {
 
 export default function PlaylistContainer({ playlist }: PlaylistProps) {
   return (
-    <div className={style.playlist}>
+    <div className={style.playlist} onClick={() => console.log(playlist)}>
       <img
         src={playlist.IMAGE}
         alt="Playlist Cover"

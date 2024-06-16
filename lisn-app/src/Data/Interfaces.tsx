@@ -52,10 +52,26 @@ export interface FollowPage {
   totalPages: number;
 }
 
+export interface SONG {
+  _id: string;
+  song_name?: string;
+  artist?: USER;
+  song_path?: string;
+  song_image?: string;
+  main_image_color?: string;
+  song_viewability?: boolean;
+  song_bpm?: number;
+  song_key?: string;
+  song_subgenre?: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
 export interface Playlist {
-  PLAYLIST_ID: string;
+  _id: string;
   IMAGE: string;
   TITLE: string;
+  SONGS?: SONG[];
 }
 
 export interface DataInputConfig {
