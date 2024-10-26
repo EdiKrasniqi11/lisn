@@ -1,6 +1,13 @@
 import axios from "axios";
-import { API_URL } from "./env_variables";
-import { COUNTRY, USER, USER_ROLE, USER_STATE } from "./Interfaces";
+import { API_URL, SONG_API_URL } from "./env_variables";
+import {
+  COUNTRY,
+  GENRE,
+  SUBGENRE,
+  USER,
+  USER_ROLE,
+  USER_STATE,
+} from "./Interfaces";
 
 export async function createUserRole(entity: USER_ROLE) {
   try {
@@ -20,6 +27,30 @@ export async function createUserState(entity: USER_STATE) {
 
     const response = await axios.post(apiUrl, entity);
 
+    return response.data;
+  } catch (error: any) {
+    alert(error?.response?.data?.message);
+  }
+}
+
+export async function createGenre(entity: GENRE) {
+  try {
+    const apiUrl = `${SONG_API_URL}/genres`;
+
+    const response = await axios.post(apiUrl, entity);
+
+    return response.data;
+  } catch (error: any) {
+    alert(error?.response?.data?.message);
+  }
+}
+
+export async function createSubGenre(entity: SUBGENRE) {
+  try {
+    const apiUrl = `${SONG_API_URL}/sub-genres`;
+
+    const response = await axios.post(apiUrl, entity);
+    
     return response.data;
   } catch (error: any) {
     alert(error?.response?.data?.message);

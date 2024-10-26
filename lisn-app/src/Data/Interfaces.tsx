@@ -52,19 +52,35 @@ export interface FollowPage {
   totalPages: number;
 }
 
+export interface GENRE {
+  _id: string;
+  genre_name?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface SUBGENRE {
+  _id: string;
+  sub_name?: string;
+  genre?: GENRE;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface SONG {
   _id: string;
-  song_name?: string;
-  artist?: USER;
-  song_path?: string;
-  song_image?: string;
-  main_image_color?: string;
-  song_viewability?: boolean;
-  song_bpm?: number;
-  song_key?: string;
-  song_subgenre?: string;
-  created_at: Date;
-  updated_at: Date;
+  SONG_NAME?: string;
+  ARTIST?: USER;
+  SONG_PATH?: string;
+  SONG_IMAGE?: string;
+  MAIN_IMAGE_COLOR?: string;
+  SONG_VIEWABILITY?: boolean;
+  SONG_BPM?: number;
+  SONG_KEY?: string;
+  SONG_SUBGENRE?: string;
+  SONG_DESCRIPTION?: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface Playlist {
@@ -72,6 +88,8 @@ export interface Playlist {
   IMAGE: string;
   TITLE: string;
   SONGS?: SONG[];
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface DataInputConfig {

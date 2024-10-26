@@ -2,6 +2,7 @@
   --main-color: rgba(0, 0, 0, 1);
   --secondary-color: rgb(0, 0, 71);
   --link-color: rgb(0, 65, 194);
+  --text-color: rgb(67, 67, 67);
 }
 body {
   margin: 0;

@@ -22,6 +22,10 @@ export default function ThemeToggle() {
         "--link-color",
         "rgb(0, 0, 0)"
       );
+      document.documentElement.style.setProperty(
+        "--text-color",
+        "rgb(67, 67, 67)"
+      );
       var toggleSwitch = document.getElementById("toggle");
       if (toggleSwitch != null) {
         toggleSwitch.style.marginLeft = "30px";
@@ -39,6 +43,10 @@ export default function ThemeToggle() {
       document.documentElement.style.setProperty(
         "--link-color",
         "rgb(0, 65, 194)"
+      );
+      document.documentElement.style.setProperty(
+        "--text-color",
+        "rgb(212, 212, 212)"
       );
       var toggleSwitch = document.getElementById("toggle");
       if (toggleSwitch != null) {
@@ -64,6 +72,10 @@ export default function ThemeToggle() {
         "--link-color",
         "rgb(0, 0, 0)"
       );
+      document.documentElement.style.setProperty(
+        "--text-color",
+        "rgb(67, 67, 67)"
+      );
       var toggleSwitch = document.getElementById("toggle");
       if (toggleSwitch != null) {
         toggleSwitch.style.marginLeft = "30px";
@@ -81,6 +93,10 @@ export default function ThemeToggle() {
       document.documentElement.style.setProperty(
         "--link-color",
         "rgb(0, 65, 194)"
+      );
+      document.documentElement.style.setProperty(
+        "--text-color",
+        "rgb(212, 212, 212)"
       );
       var toggleSwitch = document.getElementById("toggle");
       if (toggleSwitch != null) {

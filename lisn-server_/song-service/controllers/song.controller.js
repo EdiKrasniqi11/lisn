@@ -20,4 +20,5 @@ const getSongById = async (req, res) => {
 
 module.exports = {
   getSongs,
+  getSongById,
 };

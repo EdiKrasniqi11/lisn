@@ -1,6 +1,13 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { API_URL } from "./env_variables";
-import { COUNTRY, USER, USER_ROLE, USER_STATE } from "./Interfaces";
+import { API_URL, SONG_API_URL } from "./env_variables";
+import {
+  COUNTRY,
+  GENRE,
+  SUBGENRE,
+  USER,
+  USER_ROLE,
+  USER_STATE,
+} from "./Interfaces";
 
 export async function updateUserRole(entity: USER_ROLE) {
   try {
@@ -16,6 +23,28 @@ export async function updateUserRole(entity: USER_ROLE) {
 export async function updateUserState(entity: USER_STATE) {
   try {
     const apiUrl = `${API_URL}/user-states`;
+    const response = await axios.put(apiUrl, entity);
+
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function updateGenre(entity: GENRE) {
+  try {
+    const apiUrl = `${SONG_API_URL}/genres`;
+    const response = await axios.put(apiUrl, entity);
+
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function updateSubGenre(entity: SUBGENRE) {
+  try {
+    const apiUrl = `${SONG_API_URL}/sub-genres`;
     const response = await axios.put(apiUrl, entity);
 
     return response.data;

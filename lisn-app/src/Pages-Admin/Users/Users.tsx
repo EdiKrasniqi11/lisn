@@ -29,7 +29,7 @@ export default function Cities() {
   const [users, setUsers] = useState<USER[]>([]);
   const [userRoles, setUserRoles] = useState<USER_ROLE[]>([]);
   const [userStates, setUserStates] = useState<USER_STATE[]>([]);
-  const [countries, setCountries] = useState<COUNTRY[]>([]);
+  const [countries, setCountries] = useState<COUNTRY[]>([]); 
   const [roleOptions, setRoleOptions] = useState<DataInputConfig["options"]>();
   const [countryOptions, setCountryOptions] =
     useState<DataInputConfig["options"]>();

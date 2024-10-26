@@ -11,10 +11,6 @@ const SubGenreSchema = mongoose.Schema(
       ref: "genre",
       required: [true, "Parent Genre is required"],
     },
-    sub_icon: {
-      type: String,
-      required: false,
-    },
   },
   {
     timestamps: true,

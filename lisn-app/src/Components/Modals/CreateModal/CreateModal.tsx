@@ -32,8 +32,10 @@ export default function CreateModal<T>({
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await createFunction(formData);
-      navigate(-1);
+      let response = await createFunction(formData);
+      if (response !== undefined) {
+        navigate(-1);
+      }
     } catch (error) {
       console.error("Error creating entity:", error);
     }
@@ -54,8 +56,9 @@ export default function CreateModal<T>({
               {input.type === "select" ? (
                 <select
                   name={input.name}
-                  defaultValue={1}
+                  defaultValue={0}
                   onChange={handleChange}
+                  required={true}
                 >
                   <option value={0} disabled>
                     Select

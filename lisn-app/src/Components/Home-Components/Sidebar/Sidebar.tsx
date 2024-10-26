@@ -57,8 +57,8 @@ export default function Sidebar() {
         </div>
         <div className={style.rightSide}>
           {user?.role === "Artist" ? (
-            <NavLink to="/artist" className={style.navTab}>
-              <div title="Admin">Artist</div>
+            <NavLink to="/upload" className={style.navTab}>
+              <div title="Upload Music">Upload</div>
             </NavLink>
           ) : null}
           {user?.role === "Admin" ? (

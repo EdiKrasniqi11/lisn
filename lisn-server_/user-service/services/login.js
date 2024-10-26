@@ -21,10 +21,14 @@ async function login(email, password) {
     );
     if (!isPasswordValid) {
       existingUser.unsuccessful_login_attempts += 1;
+      console.log(existingUser.unsuccessful_login_attempts);
+      if (existingUser.unsuccessful_login_attempts >= 10) {
+      }
       await User.findByIdAndUpdate(existingUser._id, existingUser);
       throw new Error("Password is iconrrect");
     }
     const token = generateToken(existingUser);
+    existingUser.unsuccessful_login_attempts = 0;
     return token;
   } catch (e) {
     throw new Error(e);

@@ -6,10 +6,6 @@ const GenreSchema = mongoose.Schema(
       type: String,
       required: [true, "Genre name is required"],
     },
-    genre_icon: {
-      type: String,
-      required: false,
-    },
   },
   {
     timestamps: true,

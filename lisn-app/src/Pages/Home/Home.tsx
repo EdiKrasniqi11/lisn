@@ -9,60 +9,6 @@ import Background from "../../Components/Home-Components/Background/Background";
 
 export default function Home() {
   const [user, setUser] = useState<LoggedUser>();
-  const [dummyPlaylists, setDummyPlaylists] = useState<Playlist[]>([
-    {
-      _id: "wbc",
-      IMAGE: Views,
-      TITLE: "Views",
-      SONGS: [
-        {
-          _id: "abcdef",
-          song_path: "",
-          created_at: new Date(),
-          updated_at: new Date(),
-        },
-      ],
-    },
-    {
-      _id: "wbc",
-      IMAGE: Views,
-      TITLE: "Views",
-      SONGS: [
-        {
-          _id: "abcdef",
-          song_path: "",
-          created_at: new Date(),
-          updated_at: new Date(),
-        },
-      ],
-    },
-    {
-      _id: "wbc",
-      IMAGE: Views,
-      TITLE: "Views",
-      SONGS: [
-        {
-          _id: "abcdef",
-          song_path: "",
-          created_at: new Date(),
-          updated_at: new Date(),
-        },
-      ],
-    },
-    {
-      _id: "wbc",
-      IMAGE: Views,
-      TITLE: "Views",
-      SONGS: [
-        {
-          _id: "abcdef",
-          song_path: "",
-          created_at: new Date(),
-          updated_at: new Date(),
-        },
-      ],
-    },
-  ]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -85,11 +31,6 @@ export default function Home() {
       </div>
       <div className={style.playlistsContainer}>
         <h3>Your playlists</h3>
-        <div className={style.playlists}>
-          {dummyPlaylists.map((playlist) => (
-            <PlaylistContainer playlist={playlist} />
-          ))}
-        </div>
       </div>
     </Background>
   );

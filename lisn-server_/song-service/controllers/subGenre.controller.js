@@ -2,7 +2,7 @@ const SubGenre = require("../models/subGenre.model");
 
 const getGenres = async (req, res) => {
   try {
-    const genres = await SubGenre.find({});
+    const genres = await SubGenre.find({}).populate("genre");
     res.status(200).json(genres);
   } catch (e) {
     res.status(500).json({ message: e.message });

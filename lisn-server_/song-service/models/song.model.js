@@ -27,6 +27,10 @@ const SongSchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    song_description: {
+      type: String,
+      required: false,
+    },
     song_bpm: {
       type: Number,
       required: false,

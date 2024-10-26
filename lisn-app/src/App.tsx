@@ -11,7 +11,7 @@ import NoContent from "./Pages/NoContent/NoContent";
 import MyProfile from "./Pages/Profiles/MyProfile/MyProfile";
 import UserProfile from "./Pages/Profiles/UserProfile/UserProfile";
 import Search from "./Pages/Search/Search";
-import ArtistPage from "./Pages/ArtistPage/ArtistPage";
+import Upload from "./Pages/Upload/Upload";
 
 function App() {
   useEffect(() => {
@@ -37,7 +37,7 @@ function App() {
             element={<AdminPage />}
           />
           <Route path="/messages/:id?" element={<Messages />} />
-          <Route path="/artist/:id?/:function?" element={<ArtistPage />} />
+          <Route path='/upload/*' element={<Upload />} />
           <Route path="*" element={<NoContent />} />
         </Routes>
         <ThemeToggle />

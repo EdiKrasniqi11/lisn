@@ -5,12 +5,15 @@ import DataPlaceholder from "../../Components/Admin-Components/DataPlaceholder/D
 import UserStates from "../../Pages-Admin/UserStates/UserStates";
 import CreateButton from "../../Components/Admin-Components/CreateButton/CreateButton";
 import UserNavBar from "../../Components/Admin-Components/UserNavBar/UserNavBar";
+import SongNavBar from "../../Components/Admin-Components/SongNavBar/SongNavBar";
 import { useEffect, useState } from "react";
 import { LoggedUser } from "../../Data/Interfaces";
 import { fetchMyUser } from "../../Data/authentication";
 import Users from "../../Pages-Admin/Users/Users";
 import LoadingPage from "../../Components/Home-Components/Loading/LoadingPage";
 import Background from "../../Components/Home-Components/Background/Background";
+import Genres from "../../Pages-Admin/Genres/Genres";
+import SubGenres from "../../Pages-Admin/SubGenres/SubGenres";
 
 export default function AdminPage() {
   const params = useParams();
@@ -47,13 +50,36 @@ export default function AdminPage() {
                 Users
               </h2>
             </NavLink>
+            <h2>/</h2>
+            <NavLink to="/admin/song-service">
+              <h2
+                style={
+                  params.service === "song-service" ? { opacity: 0.7 } : {}
+                }
+              >
+                Songs
+              </h2>
+            </NavLink>
           </div>
-          {params.service === "user-service" ? <UserNavBar /> : null}
+          {params.service === "user-service" ? (
+            <UserNavBar />
+          ) : params.service === "song-service" ? (
+            <SongNavBar />
+          ) : null}
           <div className={style.dataShowcaseDiv}>
-            {params.table === undefined ? <DataPlaceholder /> : null}
-            {params.table === "user-roles" ? <UserRoles /> : null}
-            {params.table === "user-states" ? <UserStates /> : null}
-            {params.table === "users" ? <Users /> : null}
+            {params.table === undefined ? (
+              <DataPlaceholder />
+            ) : params.table === "user-roles" ? (
+              <UserRoles />
+            ) : params.table === "user-states" ? (
+              <UserStates />
+            ) : params.table === "users" ? (
+              <Users />
+            ) : params.table === "song-genres" ? (
+              <Genres />
+            ) : params.table === "song-sub-genres" ? (
+              <SubGenres />
+            ) : null}
             {params.function === undefined && params.table !== undefined ? (
               <CreateButton />
             ) : null}

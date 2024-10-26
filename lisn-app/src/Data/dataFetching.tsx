@@ -1,15 +1,23 @@
 import axios, { AxiosResponse } from "axios";
-import { COUNTRY, USER, USER_ROLE, USER_STATE } from "./Interfaces";
-import { API_URL } from "./env_variables";
+import {
+  COUNTRY,
+  GENRE,
+  SUBGENRE,
+  USER,
+  USER_ROLE,
+  USER_STATE,
+} from "./Interfaces";
+import { API_URL, SONG_API_URL } from "./env_variables";
 
 //Set function template
 async function fetchTemplate<T extends { createdAt: Date }>(
   path: string,
   setData: SetDataFunction<T[]>,
-  setIsLoading: SetIsLoadingFunction
+  setIsLoading: SetIsLoadingFunction,
+  songApi?: boolean
 ) {
   try {
-    const apiUrl = `${API_URL}/${path}`;
+    const apiUrl = songApi ? `${SONG_API_URL}/${path}` : `${API_URL}/${path}`;
     const headers = {
       Authorization: `Bearer ${localStorage.getItem("access-token")}`,
     };
@@ -47,6 +55,20 @@ export const fetchUserStates = async (
   setIsLoading: SetIsLoadingFunction
 ) => {
   fetchTemplate<USER_STATE>("user-states", setData, setIsLoading);
+};
+
+export const fetchGenres = async (
+  setData: SetDataFunction<GENRE[]>,
+  setIsLoading: SetIsLoadingFunction
+) => {
+  fetchTemplate<GENRE>("genres", setData, setIsLoading, true);
+};
+
+export const fetchSubGenres = async (
+  setData: SetDataFunction<SUBGENRE[]>,
+  setIsLoading: SetIsLoadingFunction
+) => {
+  fetchTemplate<GENRE>("sub-genres", setData, setIsLoading, true);
 };
 
 export const fetchCountries = async (
